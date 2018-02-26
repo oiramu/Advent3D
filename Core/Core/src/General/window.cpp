@@ -61,7 +61,9 @@ bool Window::Init()
 	glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
 
 	glfwSetCursorPosCallback(m_Window, cursor_position_callback);
-
+       
+	Input::Init();
+	
 	return true;
 }
 
