@@ -1,5 +1,4 @@
 #include "General\window.h"
-#include <string>
 
 int main()
 {

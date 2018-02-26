@@ -1,12 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\Input\input.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\General\window.cpp" />
+    <ClCompile Include="src\Input\input.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\General\window.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Input\input.h" />
-    <ClInclude Include="src\General\window.h" />
+    <ClInclude Include="src\Input\input.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\General\window.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Input">
+      <UniqueIdentifier>{5d0c9b3c-f9fe-4df0-9b17-54ab4dc04b3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{71b93ccc-22d9-469c-bc80-67eb0529767d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
