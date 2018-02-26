@@ -65,7 +65,7 @@ enum class KeyCode : unsigned int
 	BackSpace = GLFW_KEY_BACKSPACE
 };
 
-enum class KeyCode : unsigned int
+enum class Button : unsigned int
 {
 	//main buttons//
 	Left = GLFW_MOUSE_BUTTON_LEFT,
@@ -83,9 +83,9 @@ enum class KeyCode : unsigned int
 	B8 = GLFW_MOUSE_BUTTON_8
 };
 
-struct Input
+namespace Input
 {
-	Input()
+        void Init()
 	{
 		for (int i = 0; i < MAX_KEYS; i++)
 		{
