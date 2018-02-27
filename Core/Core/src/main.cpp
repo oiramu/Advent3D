@@ -10,7 +10,10 @@ int main()
 	{
 		window.Clear();
 		
-
+		if (Input::GetKey(Button::Left))
+		{
+			std::cout << "LEFT" << std::endl;
+		}
 
 		window.Update();
 	}
