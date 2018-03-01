@@ -65,9 +65,6 @@ struct KeyCode
 	const static unsigned int BackSpace = GLFW_KEY_BACKSPACE;
 };
 
-//working but messy
-
-/*
 struct Button
 {
 	//main buttons//
@@ -84,12 +81,6 @@ struct Button
 	const static unsigned int B6 = GLFW_MOUSE_BUTTON_6;
 	const static unsigned int B7 = GLFW_MOUSE_BUTTON_7;
 	const static unsigned int B8 = GLFW_MOUSE_BUTTON_8;
-};*/
-
-//test
-enum class Button : unsigned int
-{
-	Left = GLFW_MOUSE_BUTTON_LEFT
 };
 
 struct Input

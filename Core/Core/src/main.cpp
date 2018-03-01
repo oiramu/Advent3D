@@ -1,4 +1,5 @@
 #include "General\window.h"
+#include <map>
 
 int main()
 {
@@ -6,11 +7,12 @@ int main()
 
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
+	
 	while (window.Open())
 	{
 		window.Clear();
 		
-		if (Input::GetKey(Button::Left))
+		if (Input::GetButton(Button::Left))
 		{
 			std::cout << "LEFT" << std::endl;
 		}
