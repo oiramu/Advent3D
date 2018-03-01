@@ -23,8 +23,8 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	Input::Keys[key] = action != GLFW_RELEASE;
 }
 
-Window::Window(const char* title, const glm::vec2& size)
-	:m_Title(title), m_Size(size)
+Window::Window(const char* title, const int& sizeX, const int& sizeY)
+	:m_Title(title), m_Size(sizeX, sizeY)
 {
 	if (!Init())
 		glfwTerminate();
@@ -50,7 +50,14 @@ bool Window::Init()
 
 	glfwMakeContextCurrent(m_Window);
 
-	//TODO: add glew initialization stuff here
+	if (glewInit() != GLEW_OK)
+	{
+		std::cout << "Failed to initialize GLEW" << std::endl;
+		glfwTerminate();
+		return false;
+	}
+
+	glEnable(GL_DEPTH_TEST);
 
 	glfwSetWindowUserPointer(m_Window, this);
 
@@ -61,7 +68,7 @@ bool Window::Init()
 	glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
 
 	glfwSetCursorPosCallback(m_Window, cursor_position_callback);
-	
+
 	return true;
 }
 

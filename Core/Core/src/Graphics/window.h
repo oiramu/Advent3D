@@ -1,6 +1,7 @@
 #pragma once
 
-#include "..\Input\input.h"
+#include <GL\glew.h>
+#include "..\Logic\Input\input.h"
 #include <GLM\vec2.hpp>
 
 //basic window class for context creation and input handling//
@@ -9,7 +10,7 @@ class Window
 {
 public:
 
-	Window(const char* title, const glm::vec2& size);
+	Window(const char* title, const int& sizeX, const int& sizeY);
 
 	bool Open() { return !glfwWindowShouldClose(m_Window); }
 	
