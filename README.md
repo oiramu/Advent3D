@@ -8,7 +8,7 @@ Advent3D is a game engine currently under development. The goal is to make the e
 
 ### Graphics Pipeline
 
-![](https://raw.githubusercontent.com/gabrielevierti/Advent3D/master/resources/Graphics Pipeline.png) 
+![](https://raw.githubusercontent.com/gabrielevierti/Advent3D/master/resources/GraphicsPipeline.png) 
 
 ## Documentation
 
