@@ -4,11 +4,11 @@ Advent3D is a game engine currently under development. The goal is to make the e
 
 ### Input
 
-![](https://raw.githubusercontent.com/gabrielevierti/Advent3D/master/resources/Input.png) 
+![](https://raw.githubusercontent.com/gabrielevierti/Advent3D/blob/master/resources/Input.png) 
 
 ### Graphics Pipeline
 
-![](https://raw.githubusercontent.com/gabrielevierti/Advent3D/master/resources/Graphics_Pipeline.png) 
+![](https://raw.githubusercontent.com/gabrielevierti/Advent3D/blob/master/resources/Graphics_Pipeline.png) 
 
 ## Documentation
 
