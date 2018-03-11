@@ -1,10 +1,11 @@
 #pragma once
 
 #include <GL\glew.h>
-#include "..\Logic\Input\input.h"
+#include "..\Logic\input.h"
 #include <GLM\vec2.hpp>
 
-//basic window class for context creation and input handling//
+#include "..\gui\imgui.h"
+#include "..\gui\imgui_impl_glfw_gl3.h"
 
 class Window
 {

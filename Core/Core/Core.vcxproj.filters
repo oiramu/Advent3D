@@ -1,23 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\Logic\Input\input.cpp">
-      <Filter>Input</Filter>
-    </ClCompile>
     <ClCompile Include="src\Graphics\shader.cpp" />
     <ClCompile Include="src\Graphics\window.cpp" />
-    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="src\Logic\input.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\imgui.cpp" />
+    <ClCompile Include="src\gui\imgui_demo.cpp" />
+    <ClCompile Include="src\gui\imgui_draw.cpp" />
+    <ClCompile Include="src\gui\imgui_impl_glfw_gl3.cpp" />
+    <ClCompile Include="src\Graphics\framebuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\General\window.h">
       <Filter>Window</Filter>
     </ClInclude>
     <ClInclude Include="Advent3D.h" />
-    <ClInclude Include="src\Logic\Input\input.h">
-      <Filter>Input</Filter>
-    </ClInclude>
     <ClInclude Include="src\Graphics\shader.h" />
     <ClInclude Include="src\Graphics\window.h" />
+    <ClInclude Include="src\Logic\input.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Logic\entity.h" />
+    <ClInclude Include="src\gui\stb_truetype.h" />
+    <ClInclude Include="src\gui\imconfig.h" />
+    <ClInclude Include="src\gui\imgui.h" />
+    <ClInclude Include="src\gui\imgui_impl_glfw_gl3.h" />
+    <ClInclude Include="src\gui\imgui_internal.h" />
+    <ClInclude Include="src\gui\stb_rect_pack.h" />
+    <ClInclude Include="src\gui\stb_textedit.h" />
+    <ClInclude Include="src\Graphics\framebuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Input">

@@ -10,7 +10,7 @@ void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 	Window* win = (Window*)glfwGetWindowUserPointer(window);
 
 	Input::mx = xpos;
-	Input::my = -ypos + win->m_Size.y;
+	Input::my = ypos;
 }
 
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
@@ -57,8 +57,6 @@ bool Window::Init()
 		return false;
 	}
 
-	glEnable(GL_DEPTH_TEST);
-
 	glfwSetWindowUserPointer(m_Window, this);
 
 	glfwSetFramebufferSizeCallback(m_Window, framebuffer_size_callback);
@@ -69,6 +67,12 @@ bool Window::Init()
 
 	glfwSetCursorPosCallback(m_Window, cursor_position_callback);
 
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	ImGui_ImplGlfwGL3_Init(m_Window, true);
+
+	ImGui::StyleColorsDark();
+
 	return true;
 }
 
@@ -76,6 +80,7 @@ void Window::Clear()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glfwPollEvents();
+	ImGui_ImplGlfwGL3_NewFrame();
 }
 
 void Window::Update()
@@ -86,11 +91,15 @@ void Window::Update()
 	deltaTime = currentFrame - m_LastFrame;
 	m_LastFrame = currentFrame;
 
+	ImGui::Render();
+	ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
 	glfwGetWindowSize(m_Window, (int*)&m_Size.x, (int*)&m_Size.y);
 	glfwSwapBuffers(m_Window);
 }
 
 Window::~Window()
 {
+	ImGui_ImplGlfwGL3_Shutdown();
+	ImGui::DestroyContext();
 	glfwTerminate();
 }

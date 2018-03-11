@@ -3,15 +3,14 @@
 Shader::Shader(const std::string& filepath)
 {
 	ShaderSource src = ParseShader(filepath);
-	ID = CreateShader(src.VertexSource, src.FragmentSource);
+	m_ID = CreateShader(src.VertexSource, src.FragmentSource);
 }
 
 Shader::Shader(const std::string& vertexCode, const std::string& fragmentCode)
 {
-	ID = CreateShader(vertexCode, fragmentCode);
+	m_ID = CreateShader(vertexCode, fragmentCode);
 }
 
-//TODO: read here for creating the shader from a file
 unsigned int Shader::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
 {
 	unsigned int program = glCreateProgram();
@@ -46,28 +45,37 @@ ShaderSource Shader::ParseShader(const std::string& fileP)
 
 	ShaderType type = ShaderType::NONE;
 
-	while (getline(stream, line))
+	if (stream.good())
 	{
-		if (line.find("#shader") != std::string::npos)
+		while (getline(stream, line))
 		{
-			if (line.find("vertex") != std::string::npos)
+			if (line.find("#shader") != std::string::npos)
 			{
-				type = ShaderType::VERTEX;
+				if (line.find("vertex") != std::string::npos)
+				{
+					type = ShaderType::VERTEX;
+				}
+
+				else if (line.find("fragment") != std::string::npos)
+				{
+					type = ShaderType::FRAGMENT;
+				}
 			}
 
-			else if (line.find("fragment") != std::string::npos)
+			else
 			{
-				type = ShaderType::FRAGMENT;
+				ss[(int)type] << line << '\n';
 			}
 		}
 
-		else
-		{
-			ss[(int)type] << line << '\n';
-		}
+		return { ss[0].str(), ss[1].str() };
 	}
 
-	return { ss[0].str(), ss[1].str() };
+	else
+	{
+		std::cout << "the filepath to the shader is probably wrong" << std::endl;
+		return { ss[0].str(), ss[1].str() };
+	}
 }
 
 unsigned int Shader::CompileShader(unsigned int type, const std::string& src)
@@ -94,4 +102,19 @@ unsigned int Shader::CompileShader(unsigned int type, const std::string& src)
 	}
 
 	return id;
+}
+
+int Shader::GetUniformLocation(const std::string& name)
+{
+	if (m_UniformCache.find(name) != m_UniformCache.end())
+		return m_UniformCache[name];
+
+	int uniformLocation = glGetUniformLocation(m_ID, name.c_str());
+
+	if (uniformLocation == -1)
+	{
+		std::cout << "The Uniform '" << name << "' does not exist." << std::endl;
+	}
+
+	return uniformLocation;
 }
