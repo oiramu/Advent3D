@@ -11,6 +11,13 @@ Shader::Shader(const std::string& vertexCode, const std::string& fragmentCode)
 	m_ID = CreateShader(vertexCode, fragmentCode);
 }
 
+void Shader::Bind()
+{
+	glUseProgram(m_ID);
+	glGetProgramiv(m_ID, GL_ACTIVE_ATTRIBUTES, &ActiveAttributes);
+	glGetProgramiv(m_ID, GL_ACTIVE_UNIFORMS, &ActiveUniforms);
+}
+
 unsigned int Shader::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
 {
 	unsigned int program = glCreateProgram();

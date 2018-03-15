@@ -34,8 +34,10 @@ public:
 	Shader (const std::string& filepath);
 	Shader(const std::string& vertexCode, const std::string& fragmentCode);
 
-	void bind() { glUseProgram(m_ID); }
+	int ActiveAttributes;
+	int ActiveUniforms;
 
+	void Bind();
 
 	template<typename T>
 	void SetUniform(const std::string& name, const T& value)

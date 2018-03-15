@@ -23,8 +23,8 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	Input::Keys[key] = action != GLFW_RELEASE;
 }
 
-Window::Window(const char* title, const int& sizeX, const int& sizeY)
-	:m_Title(title), m_Size(sizeX, sizeY)
+Window::Window(const char* title, float width, float heigth)
+	:m_Title(title), m_Width(width),m_Height(heigth)
 {
 	if (!Init())
 		glfwTerminate();
@@ -39,7 +39,7 @@ bool Window::Init()
 	}
 
 	glfwWindowHint(GLFW_SAMPLES, 4);
-	m_Window = glfwCreateWindow(m_Size.x, m_Size.y, m_Title, NULL, NULL);
+	m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, NULL, NULL);
 
 	if (!m_Window)
 	{
@@ -93,7 +93,7 @@ void Window::Update()
 
 	ImGui::Render();
 	ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
-	glfwGetWindowSize(m_Window, (int*)&m_Size.x, (int*)&m_Size.y);
+	glfwGetWindowSize(m_Window, (int*)&m_Width, (int*)&m_Height);
 	glfwSwapBuffers(m_Window);
 }
 

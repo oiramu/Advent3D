@@ -34,11 +34,6 @@ void FrameBuffer::bind() const
 	glBindFramebuffer(GL_FRAMEBUFFER, m_ID);
 }
 
-void FrameBuffer::unbind() const
-{
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-}
-
 unsigned int FrameBuffer::GetTexture()
 {
 	return ColorTexture;
@@ -52,4 +47,9 @@ float FrameBuffer::GetWidth()
 float FrameBuffer::GetHeight()
 {
 	return m_Height;
+}
+
+float FrameBuffer::GetRatio()
+{
+	return m_Width / m_Height;
 }

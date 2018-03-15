@@ -2,12 +2,13 @@
 
 
 //GFX//
-#include "src\Graphics\window.h"
-#include "src\Graphics\shader.h"
 #include "src\Graphics\framebuffer.h"
-
+#include "src\Graphics\renderable.h"
+#include "src\Graphics\shader.h"
+#include "src\Graphics\window.h"
 
 //LOGIC//
+#include "src\Logic\entity.h"
 #include "src\Logic\input.h"
 
 //MATHS//

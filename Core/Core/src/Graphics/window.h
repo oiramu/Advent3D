@@ -11,14 +11,17 @@ class Window
 {
 public:
 
-	Window(const char* title, const int& sizeX, const int& sizeY);
+	Window(const char* title, float width, float heigth);
 
 	bool Open() { return !glfwWindowShouldClose(m_Window); }
 	
 	void Clear();
 	void Update();
 
-	glm::vec2 getSize() const { return m_Size; }
+	float GetWidth() { return m_Width; }
+	float GetHeight() { return m_Height; }
+	
+	float GetRatio() { return m_Width / m_Height; }
 
 	inline GLFWwindow* getHandle() const { return m_Window; }
 
@@ -31,7 +34,8 @@ private:
 	GLFWwindow* m_Window;
 
 	const char* m_Title;
-	const glm::vec2 m_Size;
+	
+	float m_Width, m_Height;
 
 	bool Init();
 

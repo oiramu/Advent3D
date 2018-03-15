@@ -17,10 +17,10 @@ public:
 	FrameBuffer(float width, float height);
 
 	void bind() const;
-	void unbind() const;
 
 	unsigned int GetTexture();
 
 	float GetWidth();
 	float GetHeight();
+	float GetRatio();
 };

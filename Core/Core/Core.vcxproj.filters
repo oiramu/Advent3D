@@ -11,6 +11,7 @@
     <ClCompile Include="src\gui\imgui_draw.cpp" />
     <ClCompile Include="src\gui\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="src\Graphics\framebuffer.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\General\window.h">
@@ -31,6 +32,7 @@
     <ClInclude Include="src\gui\stb_rect_pack.h" />
     <ClInclude Include="src\gui\stb_textedit.h" />
     <ClInclude Include="src\Graphics\framebuffer.h" />
+    <ClInclude Include="src\Graphics\renderable.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Input">
@@ -39,5 +41,8 @@
     <Filter Include="Window">
       <UniqueIdentifier>{71b93ccc-22d9-469c-bc80-67eb0529767d}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shader.shader" />
   </ItemGroup>
 </Project>
