@@ -457,7 +457,8 @@
      This helps solving the simple collision cases when you know which items are going to be created.
 
        Button("Play");        // Label = "Play",   ID = hash of "Play"
-       Button("Play##foo1");  // Label = "Play",   ID = hash of "Play##foo1" (different from above)
+       Button("Play##
+	   1");  // Label = "Play",   ID = hash of "Play##foo1" (different from above)
        Button("Play##foo2");  // Label = "Play",   ID = hash of "Play##foo2" (different from above)
 
    - If you want to completely hide the label, but still need an ID:

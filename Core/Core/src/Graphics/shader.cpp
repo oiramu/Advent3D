@@ -28,44 +28,40 @@ unsigned int Shader::CreateShader(const std::string& vertexShader, const std::st
 	glLinkProgram(program);
 	glValidateProgram(program);
 
-	glGetProgramiv(program, GL_ACTIVE_ATTRIBUTES, &ActiveAttributes);
-	glGetProgramiv(program, GL_ACTIVE_UNIFORMS, &ActiveUniforms);
-
 	glDetachShader(program, vs);
 	glDetachShader(program, fs);
 
 	glDeleteShader(vs);
 	glDeleteShader(fs);
 
-	//resize the vectors to the number of active elements
-	
-	Attributes.resize(ActiveAttributes);
-	Uniforms.resize(ActiveUniforms);
-
-	//iterate over all the active attributes
+	UpdateInfo();
 
 	char buffer[128];
+	GLenum glType;
+
 	for (unsigned int i = 0; i < ActiveAttributes; i++)
 	{
-		GLenum glType;
 		glGetActiveAttrib(program, i, sizeof(buffer), 0, &Attributes[i].Size, &glType, buffer);
+		
 		Attributes[i].Name = std::string(buffer);
-		Attributes[i].Type = TYPE::BOOL;
+
+		//TODO: add 'type' to attributes
 
 		Attributes[i].Location = glGetAttribLocation(program, buffer);
 	}
 
-	//same for the uniforms
-
+	
 	for (unsigned int i = 0; i < ActiveUniforms; i++)
-	{
-		GLenum glType;
+	{		
 		glGetActiveUniform(program, i, sizeof(buffer), 0, &Uniforms[i].Size, &glType, buffer);
+		
 		Uniforms[i].Name = std::string(buffer);
-		Uniforms[i].Type = TYPE::BOOL;
+
+		//TODO: add 'type' to uniforms
 
 		Uniforms[i].Location = glGetUniformLocation(program, buffer);
 	}
+
 
 	return program;
 }
@@ -101,7 +97,7 @@ void Shader::UpdateInfo()
 		
 		Attributes[i].Name = std::string(buffer);
 		
-		Attributes[i].Type = TYPE::BOOL;
+		//Attributes[i].Type = TYPE::BOOL;
 
 		Attributes[i].Location = glGetAttribLocation(m_ID, buffer);
 	}
@@ -115,7 +111,7 @@ void Shader::UpdateInfo()
 		
 		Uniforms[i].Name = std::string(buffer);
 		
-		Uniforms[i].Type = TYPE::BOOL;
+		//Uniforms[i].Type = TYPE::BOOL;
 
 		Uniforms[i].Location = glGetUniformLocation(m_ID, buffer);
 	}

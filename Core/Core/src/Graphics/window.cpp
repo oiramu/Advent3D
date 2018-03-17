@@ -32,15 +32,24 @@ Window::Window(const char* title, float width, float heigth)
 
 bool Window::Init()
 {
+	glfwSetFramebufferSizeCallback(m_Window, framebuffer_size_callback);
+
+	glfwSetKeyCallback(m_Window, key_callback);
+
+	glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
+
+	glfwSetCursorPosCallback(m_Window, cursor_position_callback);
+
 	if (!glfwInit())
 	{
 		std::cout << "Failed to initialize GLFW" << std::endl;
 		return false;
 	}
 
-	glfwWindowHint(GLFW_SAMPLES, 4);
 	m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, NULL, NULL);
 
+	glfwSetWindowUserPointer(m_Window, this);
+	
 	if (!m_Window)
 	{
 		std::cout << "Failed to create GLFWwindow" << std::endl;
@@ -50,22 +59,7 @@ bool Window::Init()
 
 	glfwMakeContextCurrent(m_Window);
 
-	if (glewInit() != GLEW_OK)
-	{
-		std::cout << "Failed to initialize GLEW" << std::endl;
-		glfwTerminate();
-		return false;
-	}
-
-	glfwSetWindowUserPointer(m_Window, this);
-
-	glfwSetFramebufferSizeCallback(m_Window, framebuffer_size_callback);
-
-	glfwSetKeyCallback(m_Window, key_callback);
-
-	glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
-
-	glfwSetCursorPosCallback(m_Window, cursor_position_callback);
+	gl3wInit();
 
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;

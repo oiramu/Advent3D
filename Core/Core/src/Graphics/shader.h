@@ -1,10 +1,9 @@
 #pragma once
 
-#include <Gl\glew.h>
+#include <Gl\gl3w.h>//TODO Switch to GLAD/gl3w
 
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <sstream>
 #include <vector>
 
@@ -21,15 +20,6 @@ struct ShaderSource
 
 class Shader
 {
-private:
-
-	unsigned int m_ID;
-
-	unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
-	ShaderSource ParseShader(const std::string& fileP);
-	unsigned int CompileShader(unsigned int type, const std::string& src);
-
-	int GetUniformLocation(const std::string& name);
 
 public:
 	
@@ -109,4 +99,14 @@ public:
 		if (GetUniformLocation(name) >= 0)
 			glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, &value[0][0]);
 	}
+
+private:
+
+	unsigned int m_ID;
+
+	unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
+	ShaderSource ParseShader(const std::string& fileP);
+	unsigned int CompileShader(unsigned int type, const std::string& src);
+
+	int GetUniformLocation(const std::string& name);
 };

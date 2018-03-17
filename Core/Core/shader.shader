@@ -13,10 +13,9 @@ void main()
 
 out vec4 color;
 
-uniform vec4 unif1;
-uniform vec4 unif2;
+uniform float unif1;
 
 void main()
 {
-	color = unif1*unif2;
+	color = vec4(unif1);
 }

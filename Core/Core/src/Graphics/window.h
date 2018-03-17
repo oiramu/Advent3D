@@ -1,6 +1,6 @@
 #pragma once
 
-#include <GL\glew.h>
+#include <GL\gl3w.h>
 #include "..\Logic\input.h"
 #include <GLM\vec2.hpp>
 
