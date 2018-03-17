@@ -12,7 +12,6 @@
     <ClCompile Include="src\gui\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="src\Graphics\framebuffer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="src\gl3w.c" />
     <ClCompile Include="src\Graphics\shading_types.cpp" />
   </ItemGroup>
   <ItemGroup>

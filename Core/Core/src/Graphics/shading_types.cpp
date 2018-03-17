@@ -3,4 +3,5 @@
 const char* GetTypeFromEnum(GLenum e)
 {
 	//TODO: implement
+	return "";
 }
