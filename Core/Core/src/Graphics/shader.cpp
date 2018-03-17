@@ -14,8 +14,7 @@ Shader::Shader(const std::string& vertexCode, const std::string& fragmentCode)
 void Shader::Bind()
 {
 	glUseProgram(m_ID);
-	glGetProgramiv(m_ID, GL_ACTIVE_ATTRIBUTES, &ActiveAttributes);
-	glGetProgramiv(m_ID, GL_ACTIVE_UNIFORMS, &ActiveUniforms);
+	UpdateInfo();
 }
 
 unsigned int Shader::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
@@ -29,13 +28,97 @@ unsigned int Shader::CreateShader(const std::string& vertexShader, const std::st
 	glLinkProgram(program);
 	glValidateProgram(program);
 
+	glGetProgramiv(program, GL_ACTIVE_ATTRIBUTES, &ActiveAttributes);
+	glGetProgramiv(program, GL_ACTIVE_UNIFORMS, &ActiveUniforms);
+
 	glDetachShader(program, vs);
 	glDetachShader(program, fs);
 
 	glDeleteShader(vs);
 	glDeleteShader(fs);
 
+	//resize the vectors to the number of active elements
+	
+	Attributes.resize(ActiveAttributes);
+	Uniforms.resize(ActiveUniforms);
+
+	//iterate over all the active attributes
+
+	char buffer[128];
+	for (unsigned int i = 0; i < ActiveAttributes; i++)
+	{
+		GLenum glType;
+		glGetActiveAttrib(program, i, sizeof(buffer), 0, &Attributes[i].Size, &glType, buffer);
+		Attributes[i].Name = std::string(buffer);
+		Attributes[i].Type = TYPE::BOOL;
+
+		Attributes[i].Location = glGetAttribLocation(program, buffer);
+	}
+
+	//same for the uniforms
+
+	for (unsigned int i = 0; i < ActiveUniforms; i++)
+	{
+		GLenum glType;
+		glGetActiveUniform(program, i, sizeof(buffer), 0, &Uniforms[i].Size, &glType, buffer);
+		Uniforms[i].Name = std::string(buffer);
+		Uniforms[i].Type = TYPE::BOOL;
+
+		Uniforms[i].Location = glGetUniformLocation(program, buffer);
+	}
+
 	return program;
+}
+
+bool Shader::HasUniform(const std::string& name)
+{
+	for (unsigned int i = 0; i < Uniforms.size(); i++)
+	{
+		if (Uniforms[i].Name == name)
+			return true;
+	}
+
+	return false;
+}
+
+void Shader::UpdateInfo()
+{
+	//query the program for the attributes and uniforms count
+	glGetProgramiv(m_ID, GL_ACTIVE_ATTRIBUTES, &ActiveAttributes);
+	glGetProgramiv(m_ID, GL_ACTIVE_UNIFORMS, &ActiveUniforms);
+
+	//resize to fit the new number of elements
+	Attributes.resize(ActiveAttributes);
+	Uniforms.resize(ActiveUniforms);
+
+	//loop through the attributes vector and set the corresponding values
+	char buffer[128];
+	for (unsigned int i = 0; i < ActiveAttributes; i++)
+	{
+		GLenum glType;
+		
+		glGetActiveAttrib(m_ID, i, sizeof(buffer), 0, &Attributes[i].Size, &glType, buffer);
+		
+		Attributes[i].Name = std::string(buffer);
+		
+		Attributes[i].Type = TYPE::BOOL;
+
+		Attributes[i].Location = glGetAttribLocation(m_ID, buffer);
+	}
+
+	//loop through the uniforms vector and set the corresponding values
+	for (unsigned int i = 0; i < ActiveUniforms; i++)
+	{
+		GLenum glType;
+		
+		glGetActiveUniform(m_ID, i, sizeof(buffer), 0, &Uniforms[i].Size, &glType, buffer);
+		
+		Uniforms[i].Name = std::string(buffer);
+		
+		Uniforms[i].Type = TYPE::BOOL;
+
+		Uniforms[i].Location = glGetUniformLocation(m_ID, buffer);
+	}
 }
 
 ShaderSource Shader::ParseShader(const std::string& fileP)
@@ -113,15 +196,12 @@ unsigned int Shader::CompileShader(unsigned int type, const std::string& src)
 
 int Shader::GetUniformLocation(const std::string& name)
 {
-	if (m_UniformCache.find(name) != m_UniformCache.end())
-		return m_UniformCache[name];
 
-	int uniformLocation = glGetUniformLocation(m_ID, name.c_str());
-
-	if (uniformLocation == -1)
+	for (unsigned int i = 0; i < Uniforms.size(); ++i)
 	{
-		std::cout << "The Uniform '" << name << "' does not exist." << std::endl;
+		if (Uniforms[i].Name == name)
+			return Uniforms[i].Location;
 	}
 
-	return uniformLocation;
+	return -1;
 }

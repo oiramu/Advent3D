@@ -15,9 +15,8 @@ out vec4 color;
 
 uniform vec4 unif1;
 uniform vec4 unif2;
-uniform vec4 unif3;
 
 void main()
 {
-	color = vec4(1.0f, 0.0f, 0.0f, 1.0f);
+	color = unif1*unif2;
 }

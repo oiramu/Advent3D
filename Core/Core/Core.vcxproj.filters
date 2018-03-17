@@ -33,6 +33,7 @@
     <ClInclude Include="src\gui\stb_textedit.h" />
     <ClInclude Include="src\Graphics\framebuffer.h" />
     <ClInclude Include="src\Graphics\renderable.h" />
+    <ClInclude Include="src\Graphics\shading_types.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Input">
