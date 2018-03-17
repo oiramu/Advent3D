@@ -1,22 +1,19 @@
 #pragma once
 
-#include <Gl\gl3w.h>//TODO Switch to GLAD/gl3w
+//opengl header//
+#include <Gl\gl3w.h>
 
+//STL//
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
 
+//maths//
 #include <GLM\glm.hpp>
 
+//uniform and attribute structs//
 #include "shading_types.h"
-
-
-struct ShaderSource
-{
-	std::string VertexSource;
-	std::string FragmentSource;
-};
 
 class Shader
 {
@@ -24,33 +21,37 @@ class Shader
 public:
 	
 	Shader (const std::string& filepath);
-	Shader(const std::string& vertexCode, const std::string& fragmentCode);
 
+	//list of attributes and uniforms used by the shader//
 	std::vector<Attribute> Attributes;
 	std::vector<Uniform> Uniforms;
 
+	//amount of attributes and uniforms currenly used from the shader//
 	int ActiveAttributes;
 	int ActiveUniforms;
 
+	//activate the shader//
 	void Bind();
 
+	//check if a uniform exists//
 	bool HasUniform(const std::string& name);
 
-	void UpdateInfo();
-
+	//base template//
 	template<typename T>
 	void SetUniform(const std::string& name, const T& value)
 	{
 		static_assert(false);
 	}
 
+	//int//
 	template<>
 	void SetUniform <int>(const std::string& name, const int& value)
 	{
-		if(GetUniformLocation(name) >= 0)
+		if (GetUniformLocation(name) >= 0)
 			glUniform1i(GetUniformLocation(name), value);
 	}
 
+	//float//
 	template<>
 	void SetUniform <float>(const std::string& name, const float& value)
 	{
@@ -58,6 +59,7 @@ public:
 			glUniform1f(GetUniformLocation(name), value);
 	}
 
+	//vec2//
 	template<>
 	void SetUniform <glm::vec2>(const std::string& name, const glm::vec2& value)
 	{
@@ -65,6 +67,7 @@ public:
 			glUniform2fv(GetUniformLocation(name), 1, &value[0]);
 	}
 
+	//vec3//
 	template<>
 	void SetUniform <glm::vec3>(const std::string& name, const glm::vec3& value)
 	{
@@ -72,6 +75,7 @@ public:
 			glUniform3fv(GetUniformLocation(name), 1, &value[0]);
 	}
 
+	//vec4//
 	template<>
 	void SetUniform <glm::vec4>(const std::string& name, const glm::vec4& value)
 	{
@@ -79,6 +83,7 @@ public:
 			glUniform4fv(GetUniformLocation(name), 1, &value[0]);
 	}
 
+	//mat3//
 	template<>
 	void SetUniform <glm::mat2>(const std::string& name, const glm::mat2& value)
 	{
@@ -86,6 +91,7 @@ public:
 			glUniformMatrix2fv(GetUniformLocation(name), 1, GL_FALSE, &value[0][0]);
 	}
 
+	//mat3//
 	template<>
 	void SetUniform <glm::mat3>(const std::string& name, const glm::mat3& value)
 	{
@@ -93,6 +99,7 @@ public:
 			glUniformMatrix3fv(GetUniformLocation(name), 1, GL_FALSE, &value[0][0]);
 	}
 
+	//mat4//
 	template<>
 	void SetUniform <glm::mat4>(const std::string& name, const glm::mat4& value)
 	{
@@ -100,13 +107,12 @@ public:
 			glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, &value[0][0]);
 	}
 
+
 private:
 
+	//ID//
 	unsigned int m_ID;
-
-	unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
-	ShaderSource ParseShader(const std::string& fileP);
-	unsigned int CompileShader(unsigned int type, const std::string& src);
-
+	
+	//utility functions//
 	int GetUniformLocation(const std::string& name);
 };

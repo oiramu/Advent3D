@@ -2,124 +2,8 @@
 
 Shader::Shader(const std::string& filepath)
 {
-	ShaderSource src = ParseShader(filepath);
-	m_ID = CreateShader(src.VertexSource, src.FragmentSource);
-}
-
-Shader::Shader(const std::string& vertexCode, const std::string& fragmentCode)
-{
-	m_ID = CreateShader(vertexCode, fragmentCode);
-}
-
-void Shader::Bind()
-{
-	glUseProgram(m_ID);
-	UpdateInfo();
-}
-
-unsigned int Shader::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
-{
-	unsigned int program = glCreateProgram();
-	unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
-	unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
-
-	glAttachShader(program, vs);
-	glAttachShader(program, fs);
-	glLinkProgram(program);
-	glValidateProgram(program);
-
-	glDetachShader(program, vs);
-	glDetachShader(program, fs);
-
-	glDeleteShader(vs);
-	glDeleteShader(fs);
-
-	UpdateInfo();
-
-	char buffer[128];
-	GLenum glType;
-
-	for (unsigned int i = 0; i < ActiveAttributes; i++)
-	{
-		glGetActiveAttrib(program, i, sizeof(buffer), 0, &Attributes[i].Size, &glType, buffer);
-		
-		Attributes[i].Name = std::string(buffer);
-
-		//TODO: add 'type' to attributes
-
-		Attributes[i].Location = glGetAttribLocation(program, buffer);
-	}
-
-	
-	for (unsigned int i = 0; i < ActiveUniforms; i++)
-	{		
-		glGetActiveUniform(program, i, sizeof(buffer), 0, &Uniforms[i].Size, &glType, buffer);
-		
-		Uniforms[i].Name = std::string(buffer);
-
-		//TODO: add 'type' to uniforms
-
-		Uniforms[i].Location = glGetUniformLocation(program, buffer);
-	}
-
-
-	return program;
-}
-
-bool Shader::HasUniform(const std::string& name)
-{
-	for (unsigned int i = 0; i < Uniforms.size(); i++)
-	{
-		if (Uniforms[i].Name == name)
-			return true;
-	}
-
-	return false;
-}
-
-void Shader::UpdateInfo()
-{
-	//query the program for the attributes and uniforms count
-	glGetProgramiv(m_ID, GL_ACTIVE_ATTRIBUTES, &ActiveAttributes);
-	glGetProgramiv(m_ID, GL_ACTIVE_UNIFORMS, &ActiveUniforms);
-
-	//resize to fit the new number of elements
-	Attributes.resize(ActiveAttributes);
-	Uniforms.resize(ActiveUniforms);
-
-	//loop through the attributes vector and set the corresponding values
-	char buffer[128];
-	for (unsigned int i = 0; i < ActiveAttributes; i++)
-	{
-		GLenum glType;
-		
-		glGetActiveAttrib(m_ID, i, sizeof(buffer), 0, &Attributes[i].Size, &glType, buffer);
-		
-		Attributes[i].Name = std::string(buffer);
-		
-		//Attributes[i].Type = TYPE::BOOL;
-
-		Attributes[i].Location = glGetAttribLocation(m_ID, buffer);
-	}
-
-	//loop through the uniforms vector and set the corresponding values
-	for (unsigned int i = 0; i < ActiveUniforms; i++)
-	{
-		GLenum glType;
-		
-		glGetActiveUniform(m_ID, i, sizeof(buffer), 0, &Uniforms[i].Size, &glType, buffer);
-		
-		Uniforms[i].Name = std::string(buffer);
-		
-		//Uniforms[i].Type = TYPE::BOOL;
-
-		Uniforms[i].Location = glGetUniformLocation(m_ID, buffer);
-	}
-}
-
-ShaderSource Shader::ParseShader(const std::string& fileP)
-{
-	std::ifstream stream(fileP);
+	//open the file//
+	std::ifstream stream(filepath);
 
 	enum class ShaderType
 	{
@@ -128,15 +12,18 @@ ShaderSource Shader::ParseShader(const std::string& fileP)
 
 	std::string line;
 	std::stringstream ss[2];
-
+	
 	ShaderType type = ShaderType::NONE;
 
 	if (stream.good())
 	{
+		//read the file//
 		while (getline(stream, line))
 		{
+			//look for the '#shader' keyword//
 			if (line.find("#shader") != std::string::npos)
-			{
+			{	
+				//split the code between vertex and fragment source//
 				if (line.find("vertex") != std::string::npos)
 				{
 					type = ShaderType::VERTEX;
@@ -150,54 +37,132 @@ ShaderSource Shader::ParseShader(const std::string& fileP)
 
 			else
 			{
+				//put the code in the appropriate 'slot' of the stringstream 'ss'//
 				ss[(int)type] << line << '\n';
 			}
 		}
-
-		return { ss[0].str(), ss[1].str() };
 	}
 
-	else
-	{
-		std::cout << "the filepath to the shader is probably wrong" << std::endl;
-		return { ss[0].str(), ss[1].str() };
-	}
-}
+	//create the program//
+	m_ID = glCreateProgram();
 
-unsigned int Shader::CompileShader(unsigned int type, const std::string& src)
-{
-	unsigned int id = glCreateShader(type);
-	const char* source = src.c_str();
-	
-	glShaderSource(id, 1, &source, nullptr);
-	glCompileShader(id);
+	//VERTEX SHADER//
+	unsigned int vs = glCreateShader(GL_VERTEX_SHADER);
+	const char* vs_src = ss[0].str().c_str();
 
-	int result;
-	glGetShaderiv(id, GL_COMPILE_STATUS, &result);
-	
-	if (result == GL_FALSE)
+	glShaderSource(vs, 1, &vs_src, nullptr);
+	glCompileShader(vs);
+
+	int fs_result;
+	glGetShaderiv(vs, GL_COMPILE_STATUS, &fs_result);
+
+	if (fs_result == GL_FALSE)
 	{
 		int length;
-		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
+		glGetShaderiv(vs, GL_INFO_LOG_LENGTH, &length);
 		char* message = (char*)alloca(length * sizeof(char));
-		glGetShaderInfoLog(id, length, &length, message);
-		
-		std::cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader." << '\n' << message;
-		glDeleteShader(id);
-		return 0;
+		glGetShaderInfoLog(vs, length, &length, message);
+
+		std::cout << "Failed to compile vertex shader." << std::endl << message;
+		glDeleteShader(vs);
+	}
+	
+	//FRAGMENT SHADER//
+	unsigned int fs = glCreateShader(GL_VERTEX_SHADER);
+	const char* fs_src = ss[1].str().c_str();
+
+	glShaderSource(fs, 1, &fs_src, nullptr);
+	glCompileShader(fs);
+
+	int vs_result;
+	glGetShaderiv(fs, GL_COMPILE_STATUS, &vs_result);
+
+	if (vs_result == GL_FALSE)
+	{
+		int length;
+		glGetShaderiv(fs, GL_INFO_LOG_LENGTH, &length);
+		char* message = (char*)alloca(length * sizeof(char));
+		glGetShaderInfoLog(fs, length, &length, message);
+
+		std::cout << "Failed to compile fragment shader." << std::endl << message;
+		glDeleteShader(vs);
 	}
 
-	return id;
+	//configure program//
+	glAttachShader(m_ID, vs);
+	glAttachShader(m_ID, fs);
+
+	glLinkProgram(m_ID);
+	glValidateProgram(m_ID);
+
+	glDetachShader(m_ID, vs);
+	glDetachShader(m_ID, fs);
+
+	glDeleteShader(vs);
+	glDeleteShader(fs);
+
+	//set up the Attributes and the Uniforms, with their appropriate values//
+	//TODO: set up 'X.Type' to glType, and make sure that it gets coverted to a string based on its value//
+
+	//name//
+	char buffer[128];
+	
+	//type//
+	GLenum glType;
+
+	//loop through the attributes and set their values//
+	for (unsigned int i = 0; i < ActiveAttributes; i++)
+	{
+		glGetActiveAttrib(m_ID, i, sizeof(buffer), 0, &Attributes[i].Size, &glType, buffer);
+
+		Attributes[i].Name = std::string(buffer);
+
+		Attributes[i].Location = glGetAttribLocation(m_ID, buffer);
+	}
+
+	//do the same for the uniforms//
+	for (unsigned int i = 0; i < ActiveUniforms; i++)
+	{
+		glGetActiveUniform(m_ID, i, sizeof(buffer), 0, &Uniforms[i].Size, &glType, buffer);
+
+		Uniforms[i].Name = std::string(buffer);
+
+		Uniforms[i].Location = glGetUniformLocation(m_ID, buffer);
+	}
 }
 
+//activate the shader//
+void Shader::Bind()
+{
+	//use the program//
+	glUseProgram(m_ID);
+}
+
+bool Shader::HasUniform(const std::string& name)
+{
+	for (unsigned int i = 0; i < Uniforms.size(); i++)
+	{
+		if (Uniforms[i].Name == name)
+			return true;
+	}
+
+	return false;
+}
+
+//utility functions//
 int Shader::GetUniformLocation(const std::string& name)
 {
-
+	//loop through the uniform vector and check if there is a uniform with the same name//
 	for (unsigned int i = 0; i < Uniforms.size(); ++i)
 	{
 		if (Uniforms[i].Name == name)
 			return Uniforms[i].Location;
-	}
 
-	return -1;
+		else
+		{
+			//if it does not exist print an error message to the console//
+			std::cout << "The uniform '" << Uniforms[i].Name << "' does not exist." << std::endl;
+			return -1;
+		}
+	}
 }

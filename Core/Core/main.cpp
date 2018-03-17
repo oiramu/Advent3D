@@ -12,10 +12,7 @@ int main()
 	{
 		window.Clear();
 
-		ImGui::Begin("WINDOW");
-
-		ImGui::End();
-
+		
 
 
 		window.Update();

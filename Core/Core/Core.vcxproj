@@ -157,7 +157,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\Graphics\framebuffer.cpp" />
     <ClCompile Include="src\Graphics\shader.cpp" />
-    <ClCompile Include="src\Graphics\shading_types.cpp" />
     <ClCompile Include="src\Graphics\window.cpp" />
     <ClCompile Include="src\gui\imgui.cpp" />
     <ClCompile Include="src\gui\imgui_demo.cpp" />
