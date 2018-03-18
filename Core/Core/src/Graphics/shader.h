@@ -26,12 +26,8 @@ public:
 	std::vector<Attribute> Attributes;
 	std::vector<Uniform> Uniforms;
 
-	//amount of attributes and uniforms currenly used from the shader//
-	int ActiveAttributes;
-	int ActiveUniforms;
-
 	//activate the shader//
-	void Bind();
+	void Bind() const;
 
 	//check if a uniform exists//
 	bool HasUniform(const std::string& name);
@@ -49,6 +45,14 @@ public:
 	{
 		if (GetUniformLocation(name) >= 0)
 			glUniform1i(GetUniformLocation(name), value);
+	}
+
+	//unsigned int//
+	template<>
+	void SetUniform <unsigned int>(const std::string& name, const unsigned int& value)
+	{
+		if (GetUniformLocation(name) >= 0)
+			glUniform1ui(GetUniformLocation(name), value);
 	}
 
 	//float//
@@ -112,6 +116,10 @@ private:
 
 	//ID//
 	unsigned int m_ID;
+
+	//amount of attributes and uniforms currenly used from the shader//
+	unsigned int ActiveAttributes;
+	unsigned int ActiveUniforms;
 	
 	//utility functions//
 	int GetUniformLocation(const std::string& name);

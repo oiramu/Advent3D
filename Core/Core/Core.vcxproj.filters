@@ -12,6 +12,9 @@
     <ClCompile Include="src\gui\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="src\Graphics\framebuffer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\Graphics\mesh.cpp" />
+    <ClCompile Include="src\Graphics\model.cpp" />
+    <ClCompile Include="src\Graphics\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\General\window.h">
@@ -34,6 +37,8 @@
     <ClInclude Include="src\Graphics\framebuffer.h" />
     <ClInclude Include="src\Graphics\renderable.h" />
     <ClInclude Include="src\Graphics\shading_types.h" />
+    <ClInclude Include="src\Graphics\mesh.h" />
+    <ClInclude Include="src\Graphics\model.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Input">

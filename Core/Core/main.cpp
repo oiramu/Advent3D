@@ -8,11 +8,12 @@ int main()
 	
 	Shader shader("shader.shader");
 
+	std::cout << "Opengl version: " << glGetString(GL_VERSION) << std::endl;
+
 	while (window.Open())
 	{
 		window.Clear();
 
-		
 
 
 		window.Update();

@@ -101,7 +101,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>assimp-vc140-mt.lib;gl3w.lib;opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -112,7 +112,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>assimp-vc140-mt.lib;gl3w.lib;opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -131,7 +131,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>assimp-vc140-mt.lib;gl3w.lib;opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -150,13 +150,16 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>assimp-vc140-mt.lib;gl3w.lib;opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\Graphics\framebuffer.cpp" />
+    <ClCompile Include="src\Graphics\mesh.cpp" />
+    <ClCompile Include="src\Graphics\model.cpp" />
     <ClCompile Include="src\Graphics\shader.cpp" />
+    <ClCompile Include="src\Graphics\stb_image.cpp" />
     <ClCompile Include="src\Graphics\window.cpp" />
     <ClCompile Include="src\gui\imgui.cpp" />
     <ClCompile Include="src\gui\imgui_demo.cpp" />
@@ -168,6 +171,8 @@
     <ClInclude Include="Advent3D.h" />
     <ClInclude Include="src\General\window.h" />
     <ClInclude Include="src\Graphics\framebuffer.h" />
+    <ClInclude Include="src\Graphics\mesh.h" />
+    <ClInclude Include="src\Graphics\model.h" />
     <ClInclude Include="src\Graphics\renderable.h" />
     <ClInclude Include="src\Graphics\shader.h" />
     <ClInclude Include="src\Graphics\shading_types.h" />
@@ -184,11 +189,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="shader.shader" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Gl3w\Gl3w.vcxproj">
-      <Project>{72e5f9f5-cc39-4984-9f40-46773e59f463}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

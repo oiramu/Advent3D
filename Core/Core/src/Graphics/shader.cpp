@@ -132,7 +132,7 @@ Shader::Shader(const std::string& filepath)
 }
 
 //activate the shader//
-void Shader::Bind()
+void Shader::Bind() const
 {
 	//use the program//
 	glUseProgram(m_ID);
@@ -165,4 +165,6 @@ int Shader::GetUniformLocation(const std::string& name)
 			return -1;
 		}
 	}
+
+	return 0;
 }
