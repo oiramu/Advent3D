@@ -1,7 +1,12 @@
 #pragma once
 
+//glfw
 #include <GLFW\glfw3.h>
+
+//maths
 #include <GLM\vec2.hpp>
+
+//STL
 #include <iostream>
 
 #define MAX_KEYS 1024

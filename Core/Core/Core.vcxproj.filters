@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\Graphics\shader.cpp" />
     <ClCompile Include="src\Graphics\window.cpp" />
     <ClCompile Include="src\Logic\input.cpp">
       <Filter>Input</Filter>
@@ -12,16 +11,14 @@
     <ClCompile Include="src\gui\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="src\Graphics\framebuffer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="src\Graphics\mesh.cpp" />
-    <ClCompile Include="src\Graphics\model.cpp" />
     <ClCompile Include="src\Graphics\stb_image.cpp" />
+    <ClCompile Include="src\Graphics\shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\General\window.h">
       <Filter>Window</Filter>
     </ClInclude>
     <ClInclude Include="Advent3D.h" />
-    <ClInclude Include="src\Graphics\shader.h" />
     <ClInclude Include="src\Graphics\window.h" />
     <ClInclude Include="src\Logic\input.h">
       <Filter>Input</Filter>
@@ -36,9 +33,7 @@
     <ClInclude Include="src\gui\stb_textedit.h" />
     <ClInclude Include="src\Graphics\framebuffer.h" />
     <ClInclude Include="src\Graphics\renderable.h" />
-    <ClInclude Include="src\Graphics\shading_types.h" />
-    <ClInclude Include="src\Graphics\mesh.h" />
-    <ClInclude Include="src\Graphics\model.h" />
+    <ClInclude Include="src\Graphics\shader.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Input">
@@ -49,6 +44,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shader.shader" />
+    <None Include="ML.fs" />
+    <None Include="ML.vs" />
   </ItemGroup>
 </Project>

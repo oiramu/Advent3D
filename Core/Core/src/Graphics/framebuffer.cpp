@@ -3,8 +3,6 @@
 FrameBuffer::FrameBuffer(float width, float height)
 	:m_Width(width),m_Height(height)
 {
-	//FRAMEBUFFER//
-
 	//generate the framebuffer
 	glGenFramebuffers(1, &m_ID);
 	
@@ -23,7 +21,6 @@ FrameBuffer::FrameBuffer(float width, float height)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_Texture, 0);
 
-	//RENDERBUFFER//
 	unsigned int rbo;
 	
 	//generate the renderbuffer
@@ -46,32 +43,27 @@ FrameBuffer::FrameBuffer(float width, float height)
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-//activate the framebuffer//
 void FrameBuffer::Bind() const
 {
 	//bind it
 	glBindFramebuffer(GL_FRAMEBUFFER, m_ID);
 }
 
-//get the texture//
 unsigned int FrameBuffer::GetTexture()
 {
 	return m_Texture;
 }
 
-//get the width//
 float FrameBuffer::GetWidth()
 {
 	return m_Width;
 }
 
-//get the height//
 float FrameBuffer::GetHeight()
 {
 	return m_Height;
 }
 
-//get the ratio//
 float FrameBuffer::GetRatio()
 {
 	return m_Width / m_Height;

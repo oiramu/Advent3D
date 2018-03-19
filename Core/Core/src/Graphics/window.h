@@ -1,9 +1,12 @@
 #pragma once
 
+//opengl
 #include <GL\gl3w.h>
-#include "..\Logic\input.h"
-#include <GLM\vec2.hpp>
 
+//input
+#include "..\Logic\input.h"
+
+//imgui
 #include "..\gui\imgui.h"
 #include "..\gui\imgui_impl_glfw_gl3.h"
 
