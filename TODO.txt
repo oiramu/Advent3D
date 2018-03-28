@@ -1,4 +1,3 @@
-- entity and component structure 
 - mesh class
 - assetManager
 - maths class 
