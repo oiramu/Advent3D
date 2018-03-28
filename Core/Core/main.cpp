@@ -12,7 +12,7 @@ int main()
 	{
 		window.Clear();
 
-
+		
 
 
 		window.Update();

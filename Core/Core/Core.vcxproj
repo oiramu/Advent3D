@@ -159,10 +159,6 @@
     <ClCompile Include="src\Graphics\shader.cpp" />
     <ClCompile Include="src\Graphics\stb_image.cpp" />
     <ClCompile Include="src\Graphics\window.cpp" />
-    <ClCompile Include="src\gui\imgui.cpp" />
-    <ClCompile Include="src\gui\imgui_demo.cpp" />
-    <ClCompile Include="src\gui\imgui_draw.cpp" />
-    <ClCompile Include="src\gui\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="src\Logic\input.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -172,13 +168,6 @@
     <ClInclude Include="src\Graphics\renderable.h" />
     <ClInclude Include="src\Graphics\shader.h" />
     <ClInclude Include="src\Graphics\window.h" />
-    <ClInclude Include="src\gui\imconfig.h" />
-    <ClInclude Include="src\gui\imgui.h" />
-    <ClInclude Include="src\gui\imgui_impl_glfw_gl3.h" />
-    <ClInclude Include="src\gui\imgui_internal.h" />
-    <ClInclude Include="src\gui\stb_rect_pack.h" />
-    <ClInclude Include="src\gui\stb_textedit.h" />
-    <ClInclude Include="src\gui\stb_truetype.h" />
     <ClInclude Include="src\Logic\entity.h" />
     <ClInclude Include="src\Logic\input.h" />
   </ItemGroup>
