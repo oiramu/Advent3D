@@ -1,8 +1,0 @@
-- mesh class
-- assetManager
-- maths class 
-- texture loader
-- model loader wAssimp
-- texture class
-- texture2D class
-- load and render a 3D model with the new architecture
