@@ -127,12 +127,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\maths\linear algebra\linear_algebra.h" />
-    <ClInclude Include="src\maths\linear algebra\matrices\Matrix4.h" />
+    <ClInclude Include="src\maths\linear algebra\matrices\matrix4x4.h" />
     <ClInclude Include="src\maths\linear algebra\vectors\vector2.h" />
     <ClInclude Include="src\maths\linear algebra\vectors\vector3.h" />
     <ClInclude Include="src\maths\linear algebra\vectors\vector4.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\maths\linear algebra\matrices\matrix4x4.cpp" />
     <ClCompile Include="src\maths\linear algebra\vectors\vector2.cpp" />
     <ClCompile Include="src\maths\linear algebra\vectors\vector3.cpp" />
     <ClCompile Include="src\maths\linear algebra\vectors\vector4.cpp" />
