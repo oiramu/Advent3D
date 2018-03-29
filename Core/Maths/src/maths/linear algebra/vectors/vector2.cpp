@@ -7,14 +7,14 @@ Vector2::Vector2()
 {
 	this->x = 0.0f;
 	this->y = 0.0f;
-	this->magnitude = CalculateMagnitude();
+	CalculateMagnitude();
 }
 
 Vector2::Vector2(const float& x, const float& y)
 {
 	this->x = x;
 	this->y = y;
-	this->magnitude = CalculateMagnitude();
+	CalculateMagnitude();
 }
 
 //operations
@@ -22,7 +22,7 @@ Vector2& Vector2::Add(const Vector2& other)
 {
 	x += other.x;
 	y += other.y;
-	magnitude = CalculateMagnitude();
+	CalculateMagnitude();
 
 	return *this;
 }
@@ -31,7 +31,7 @@ Vector2& Vector2::Subtract(const Vector2& other)
 {
 	x -= other.x;
 	y -= other.y;
-	magnitude = CalculateMagnitude();
+	CalculateMagnitude();
 
 	return *this;
 }
@@ -40,7 +40,7 @@ Vector2& Vector2::Multiply(const Vector2& other)
 {
 	x *= other.x;
 	y *= other.y;
-	magnitude = CalculateMagnitude();
+	CalculateMagnitude();
 
 	return *this;
 }
@@ -49,7 +49,7 @@ Vector2& Vector2::Divide(const Vector2& other)
 {
 	x /= other.x;
 	y /= other.y;
-	magnitude = CalculateMagnitude();
+	CalculateMagnitude();
 
 	return *this;
 }

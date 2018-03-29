@@ -6,6 +6,7 @@
     <ClInclude Include="src\maths\linear algebra\vectors\vector3.h" />
     <ClInclude Include="src\maths\linear algebra\vectors\vector4.h" />
     <ClInclude Include="src\maths\linear algebra\matrices\matrix4x4.h" />
+    <ClInclude Include="src\maths\common.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\maths\linear algebra\vectors\vector2.cpp" />

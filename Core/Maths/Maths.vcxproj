@@ -126,6 +126,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\maths\common.h" />
     <ClInclude Include="src\maths\linear algebra\linear_algebra.h" />
     <ClInclude Include="src\maths\linear algebra\matrices\matrix4x4.h" />
     <ClInclude Include="src\maths\linear algebra\vectors\vector2.h" />

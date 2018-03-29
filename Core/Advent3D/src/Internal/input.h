@@ -1,7 +1,7 @@
 #pragma once
 
 //maths
-#include <GLM\vec2.hpp>
+#include "maths\linear algebra\vectors\vector2.h"
 
 //STL
 #include <iostream>
@@ -127,7 +127,7 @@ struct Input
 
 	static bool GetKey(KeyCode key);
 	static bool GetButton(Button button);
-	static glm::vec2 GetMousePosition();
+	static Maths::Vector2 GetMousePosition();
 };
 
 }

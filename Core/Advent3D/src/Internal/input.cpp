@@ -34,9 +34,9 @@ bool Input::GetButton(Button button)
 	return Input::MouseButtons[value];
 }
 
-glm::vec2 Input::GetMousePosition()
+Maths::Vector2 Input::GetMousePosition()
 {
-	return glm::vec2(Input::mx, Input::my);
+	return Maths::Vector2(Input::mx, Input::my);
 }
 
 }

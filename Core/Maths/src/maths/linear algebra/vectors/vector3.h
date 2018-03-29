@@ -5,7 +5,7 @@
 
 namespace Advent3D { namespace Maths {
 
-class Vector3
+struct Vector3
 {
 	//components
 	float x;
