@@ -1,5 +1,7 @@
 #include "input.h"
 
+namespace Advent3D {
+
 bool Input::Keys[MAX_KEYS];
 bool Input::MouseButtons[MAX_MOUSE_BUTTONS];
 
@@ -35,4 +37,6 @@ bool Input::GetButton(Button button)
 glm::vec2 Input::GetMousePosition()
 {
 	return glm::vec2(Input::mx, Input::my);
+}
+
 }

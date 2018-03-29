@@ -1,5 +1,7 @@
 #include "window.h"
 
+namespace Advent3D { namespace Graphics {
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
@@ -24,7 +26,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 }
 
 Window::Window(const char* title, float width, float heigth)
-	:m_Title(title), m_Width(width),m_Height(heigth)
+	:m_Title(title), m_Width(width), m_Height(heigth)
 {
 	if (!Init())
 		glfwTerminate();
@@ -52,7 +54,7 @@ bool Window::Init()
 	m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, NULL, NULL);
 
 	glfwSetWindowUserPointer(m_Window, this);
-	
+
 	//check if the window has been created successfully
 	if (!m_Window)
 	{
@@ -76,11 +78,16 @@ bool Window::Init()
 	return true;
 }
 
+void Window::SetClearColor(float r, float g, float b)
+{
+	glClearColor(r, g, b, 1.0f);
+}
+
 void Window::Clear()
 {
 	//clear the color and depth buffer bit
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+
 	glfwPollEvents();
 }
 
@@ -92,10 +99,10 @@ void Window::Update()
 
 	deltaTime = currentFrame - m_LastFrame;
 	m_LastFrame = currentFrame;
-	
+
 	//reset width and height
 	glfwGetWindowSize(m_Window, (int*)&m_Width, (int*)&m_Height);
-	
+
 	//swap the buffers
 	glfwSwapBuffers(m_Window);
 }
@@ -104,3 +111,5 @@ Window::~Window()
 {
 	glfwTerminate();
 }
+
+} }

@@ -6,6 +6,8 @@
 //STL
 #include <iostream>
 
+namespace Advent3D {
+
 #define MAX_KEYS 1024
 #define MAX_MOUSE_BUTTONS 32
 
@@ -71,8 +73,8 @@ enum class Button : unsigned int
 {
 	Left = 0,
 	Right = 1,
-	Middle = 2,	
-	
+	Middle = 2,
+
 	B1 = 0,
 	B2 = 1,
 	B3 = 2,
@@ -103,7 +105,6 @@ enum class GamePad : unsigned int
 	B16 = 15
 };
 
-
 struct Input
 {
 	static bool Keys[MAX_KEYS];
@@ -111,7 +112,7 @@ struct Input
 
 	static double mx, my;
 
-    Input()
+	Input()
 	{
 		for (int i = 0; i < MAX_KEYS; i++)
 		{
@@ -128,3 +129,5 @@ struct Input
 	static bool GetButton(Button button);
 	static glm::vec2 GetMousePosition();
 };
+
+}

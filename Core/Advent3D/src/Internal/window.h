@@ -9,6 +9,8 @@
 //glfw
 #include <GLFW\glfw3.h>
 
+namespace Advent3D { namespace Graphics {
+
 class Window
 {
 public:
@@ -19,6 +21,7 @@ public:
 	
 	void Clear();
 	void Update();
+	void SetClearColor(float r, float b, float g);
 
 	float GetWidth() { return m_Width; }
 	float GetHeight() { return m_Height; }
@@ -45,3 +48,5 @@ private:
 	friend void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
 	friend void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
 };
+
+} }
