@@ -20,12 +20,12 @@ namespace Advent3D { namespace Maths {
 
 	}
 
-	mat4 mat4::Identity()
+	mat4 mat4::identity()
 	{
 		return mat4(1.0f);
 	}
 
-	mat4& mat4::Multiply(const mat4& other)
+	mat4& mat4::multiply(const mat4& other)
 	{
 		for (int y = 0; y < 4; y++)
 		{
@@ -47,25 +47,27 @@ namespace Advent3D { namespace Maths {
 	
 	mat4 operator* (mat4 left, const mat4& right)
 	{
-		return left.Multiply(right);
+		return left.multiply(right);
 	}
 
 	mat4& mat4::operator+= (const mat4& other)
 	{
-		return Multiply(other);
+		return multiply(other);
 	}
 
 	std::ostream& operator<< (std::ostream& stream, const mat4& matrix)
 	{
-		stream << "Mat4: | " << matrix.elements[0 + 0 * 4] << " , " << matrix.elements[1 + 0 * 4] << " , " << matrix.elements[2 + 0 * 4] << " , " << matrix.elements[3 + 0 * 4] << " |\n";
-		stream << "      | " << matrix.elements[0 + 1 * 4] << " , " << matrix.elements[1 + 1 * 4] << " , " << matrix.elements[2 + 1 * 4] << " , " << matrix.elements[3 + 1 * 4] << " |\n";
-		stream << "      | " << matrix.elements[0 + 2 * 4] << " , " << matrix.elements[1 + 2 * 4] << " , " << matrix.elements[2 + 2 * 4] << " , " << matrix.elements[3 + 2 * 4] << " |\n";
-		stream << "      | " << matrix.elements[0 + 3 * 4] << " , " << matrix.elements[1 + 3 * 4] << " , " << matrix.elements[2 + 3 * 4] << " , " << matrix.elements[3 + 3 * 4] << " |\n";
+		stream << "mat4: \n\n";
+
+		stream << " | " << matrix.elements[0 + 0 * 4] << " , " << matrix.elements[1 + 0 * 4] << " , " << matrix.elements[2 + 0 * 4] << " , " << matrix.elements[3 + 0 * 4] << " |\n";
+		stream << " | " << matrix.elements[0 + 1 * 4] << " , " << matrix.elements[1 + 1 * 4] << " , " << matrix.elements[2 + 1 * 4] << " , " << matrix.elements[3 + 1 * 4] << " |\n";
+		stream << " | " << matrix.elements[0 + 2 * 4] << " , " << matrix.elements[1 + 2 * 4] << " , " << matrix.elements[2 + 2 * 4] << " , " << matrix.elements[3 + 2 * 4] << " |\n";
+		stream << " | " << matrix.elements[0 + 3 * 4] << " , " << matrix.elements[1 + 3 * 4] << " , " << matrix.elements[2 + 3 * 4] << " , " << matrix.elements[3 + 3 * 4] << " |\n\n";
 
 		return stream;
 	}
 
-	mat4 mat4::Ortho(float left, float right, float bottom, float top, float near, float far)
+	mat4 mat4::ortho(float left, float right, float bottom, float top, float near, float far)
 	{
 		mat4 result(1.0f);
 
@@ -80,7 +82,7 @@ namespace Advent3D { namespace Maths {
 		return result;
 	}
 
-	mat4 mat4::Perspective(float fov, float aspectRatio, float near, float far)
+	mat4 mat4::perspective(float fov, float aspectRatio, float near, float far)
 	{
 		mat4 result(1.0f);
 
@@ -98,7 +100,7 @@ namespace Advent3D { namespace Maths {
 		return result;
 	}
 
-	mat4 mat4::Translation(const vec3& translation)
+	mat4 mat4::translation(const vec3& translation)
 	{
 		mat4 result(1.0f);
 
@@ -109,7 +111,7 @@ namespace Advent3D { namespace Maths {
 		return result;
 	}
 
-	mat4 mat4::Rotation(float angle, const vec3& axis)
+	mat4 mat4::rotation(float angle, const vec3& axis)
 	{
 		mat4 result(1.0f);
 
@@ -137,7 +139,7 @@ namespace Advent3D { namespace Maths {
 		return result;
 	}
 
-	mat4 mat4::Scale(const vec3& scale)
+	mat4 mat4::scale(const vec3& scale)
 	{
 		mat4 result(1.0f);
 

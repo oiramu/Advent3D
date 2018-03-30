@@ -132,6 +132,7 @@
     <ClInclude Include="src\maths\linear algebra\vectors\vec2.h" />
     <ClInclude Include="src\maths\linear algebra\vectors\vec3.h" />
     <ClInclude Include="src\maths\linear algebra\vectors\vec4.h" />
+    <ClInclude Include="src\maths.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\maths\common.cpp" />

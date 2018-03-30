@@ -19,10 +19,10 @@ struct vec2
 	vec2(const float& x, const float& y);
 
 	//operations
-	vec2& Add(const vec2& other);
-	vec2& Subtract(const vec2& other);
-	vec2& Multiply(const vec2& other);
-	vec2& Divide(const vec2& other);
+	vec2& add(const vec2& other);
+	vec2& subtract(const vec2& other);
+	vec2& multiply(const vec2& other);
+	vec2& divide(const vec2& other);
 
 	//operators
 	friend vec2& operator+ (vec2& left, const vec2& right);
@@ -38,9 +38,9 @@ struct vec2
 	vec2& operator/= (const vec2& other);
 
 	//utility functions
-	void Normalize();
+	void normalize();
 
-	void CalculateMagnitude();
+	void calculateMagnitude();
 
 };
 		 

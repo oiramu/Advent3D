@@ -21,10 +21,10 @@ struct vec4
 	vec4(const float& x, const float& y, const float& z, const float& w);
 
 	//operations
-	vec4& Add(const vec4& other);
-	vec4& Subtract(const vec4& other);
-	vec4& Multiply(const vec4& other);
-	vec4& Divide(const vec4& other);
+	vec4& add(const vec4& other);
+	vec4& subtract(const vec4& other);
+	vec4& multiply(const vec4& other);
+	vec4& divide(const vec4& other);
 
 	//operators
 	friend vec4& operator+ (vec4& left, const vec4& right);
@@ -40,9 +40,9 @@ struct vec4
 	vec4& operator/= (const vec4& other);
 
 	//utility functions
-	void Normalize();
+	void normalize();
 
-	void CalculateMagnitude();
+	void calculateMagnitude();
 
 };
 } }

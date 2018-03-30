@@ -7,49 +7,49 @@ vec2::vec2()
 {
 	this->x = 0.0f;
 	this->y = 0.0f;
-	CalculateMagnitude();
+	calculateMagnitude();
 }
 
 vec2::vec2(const float& x, const float& y)
 {
 	this->x = x;
 	this->y = y;
-	CalculateMagnitude();
+	calculateMagnitude();
 }
 
 //operations
-vec2& vec2::Add(const vec2& other)
+vec2& vec2::add(const vec2& other)
 {
 	x += other.x;
 	y += other.y;
-	CalculateMagnitude();
+	calculateMagnitude();
 
 	return *this;
 }
 
-vec2& vec2::Subtract(const vec2& other)
+vec2& vec2::subtract(const vec2& other)
 {
 	x -= other.x;
 	y -= other.y;
-	CalculateMagnitude();
+	calculateMagnitude();
 
 	return *this;
 }
 
-vec2& vec2::Multiply(const vec2& other)
+vec2& vec2::multiply(const vec2& other)
 {
 	x *= other.x;
 	y *= other.y;
-	CalculateMagnitude();
+	calculateMagnitude();
 
 	return *this;
 }
 
-vec2& vec2::Divide(const vec2& other)
+vec2& vec2::divide(const vec2& other)
 {
 	x /= other.x;
 	y /= other.y;
-	CalculateMagnitude();
+	calculateMagnitude();
 
 	return *this;
 }
@@ -57,58 +57,58 @@ vec2& vec2::Divide(const vec2& other)
 //operators
 vec2& operator+ (vec2& left, const vec2& right)
 {
-	return left.Add(right);
+	return left.add(right);
 }
 
 vec2& operator- (vec2& left, const vec2& right)
 {
-	return left.Subtract(right);
+	return left.subtract(right);
 }
 
 vec2& operator* (vec2& left, const vec2& right)
 {
-	return left.Multiply(right);
+	return left.multiply(right);
 }
 
 vec2& operator/ (vec2& left, const vec2& right)
 {
-	return left.Divide(right);
+	return left.divide(right);
 }
 
 vec2& vec2::operator+= (const vec2& other)
 {
-	return Add(other);
+	return add(other);
 }
 
 vec2& vec2::operator-= (const vec2& other)
 {
-	return Subtract(other);
+	return subtract(other);
 }
 
 vec2& vec2::operator*= (const vec2& other)
 {
-	return Multiply(other);
+	return multiply(other);
 }
 
 vec2& vec2::operator/= (const vec2& other)
 {
-	return Divide(other);
+	return divide(other);
 }
 
 std::ostream& operator<< (std::ostream& stream, const vec2& vector)
 {
 	stream << "vec2: (" << vector.x << " , " << vector.y << ")\n";
-	stream << "Magnitude: " << vector.magnitude;
+	stream << "magnitude: " << vector.magnitude;
 	return stream;
 }
 
 //utility functions
-void vec2::CalculateMagnitude()
+void vec2::calculateMagnitude()
 {
 	magnitude = sqrt(x*x + y*y);
 }
 
-void vec2::Normalize()
+void vec2::normalize()
 {
 	magnitude = 1;
 }

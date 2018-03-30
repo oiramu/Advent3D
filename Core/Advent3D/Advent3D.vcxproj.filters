@@ -15,21 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Internal\window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Internal\input.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\internal\input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\internal\window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Internal\window.h">
+    <ClInclude Include="src\internal\input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Internal\input.h">
+    <ClInclude Include="src\internal\window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

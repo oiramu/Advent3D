@@ -146,13 +146,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Internal\input.cpp" />
-    <ClCompile Include="src\Internal\window.cpp" />
+    <ClCompile Include="src\internal\input.cpp" />
+    <ClCompile Include="src\internal\window.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Internal\input.h" />
-    <ClInclude Include="src\Internal\window.h" />
+    <ClInclude Include="src\internal\input.h" />
+    <ClInclude Include="src\internal\window.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Maths\Maths.vcxproj">
