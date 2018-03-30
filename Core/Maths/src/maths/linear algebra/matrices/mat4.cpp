@@ -1,14 +1,14 @@
-#include "matrix4x4.h"
+#include "mat4.h"
 
 namespace Advent3D { namespace Maths {
 
-	Matrix4x4::Matrix4x4()
+	mat4::mat4()
 	{
 		for (int i = 0; i < 4 * 4; i++)
 			elements[i] = 0.0f;
 	}
 
-	Matrix4x4::Matrix4x4(float diagonal)
+	mat4::mat4(float diagonal)
 	{
 		for (int i = 0; i < 4 * 4; i++)
 			elements[i] = 0.0f;
@@ -20,12 +20,12 @@ namespace Advent3D { namespace Maths {
 
 	}
 
-	Matrix4x4 Matrix4x4::Identity()
+	mat4 mat4::Identity()
 	{
-		return Matrix4x4(1.0f);
+		return mat4(1.0f);
 	}
 
-	Matrix4x4& Matrix4x4::Multiply(const Matrix4x4& other)
+	mat4& mat4::Multiply(const mat4& other)
 	{
 		for (int y = 0; y < 4; y++)
 		{
@@ -45,19 +45,29 @@ namespace Advent3D { namespace Maths {
 		return *this;
 	}
 	
-	Matrix4x4 operator* (Matrix4x4 left, const Matrix4x4& right)
+	mat4 operator* (mat4 left, const mat4& right)
 	{
 		return left.Multiply(right);
 	}
 
-	Matrix4x4& Matrix4x4::operator+= (const Matrix4x4& other)
+	mat4& mat4::operator+= (const mat4& other)
 	{
 		return Multiply(other);
 	}
 
-	Matrix4x4 Matrix4x4::Ortho(float left, float right, float bottom, float top, float near, float far)
+	std::ostream& operator<< (std::ostream& stream, const mat4& matrix)
 	{
-		Matrix4x4 result(1.0f);
+		stream << "Mat4: | " << matrix.elements[0 + 0 * 4] << " , " << matrix.elements[1 + 0 * 4] << " , " << matrix.elements[2 + 0 * 4] << " , " << matrix.elements[3 + 0 * 4] << " |\n";
+		stream << "      | " << matrix.elements[0 + 1 * 4] << " , " << matrix.elements[1 + 1 * 4] << " , " << matrix.elements[2 + 1 * 4] << " , " << matrix.elements[3 + 1 * 4] << " |\n";
+		stream << "      | " << matrix.elements[0 + 2 * 4] << " , " << matrix.elements[1 + 2 * 4] << " , " << matrix.elements[2 + 2 * 4] << " , " << matrix.elements[3 + 2 * 4] << " |\n";
+		stream << "      | " << matrix.elements[0 + 3 * 4] << " , " << matrix.elements[1 + 3 * 4] << " , " << matrix.elements[2 + 3 * 4] << " , " << matrix.elements[3 + 3 * 4] << " |\n";
+
+		return stream;
+	}
+
+	mat4 mat4::Ortho(float left, float right, float bottom, float top, float near, float far)
+	{
+		mat4 result(1.0f);
 
 		result.elements[0 + 0 * 4] = 2.0f / (right - left);
 		result.elements[1 + 1 * 4] = 2.0f / (top - bottom);
@@ -70,9 +80,9 @@ namespace Advent3D { namespace Maths {
 		return result;
 	}
 
-	Matrix4x4 Matrix4x4::Perspective(float fov, float aspectRatio, float near, float far)
+	mat4 mat4::Perspective(float fov, float aspectRatio, float near, float far)
 	{
-		Matrix4x4 result(1.0f);
+		mat4 result(1.0f);
 
 		float q = 1.0f / tan(toRadians(0.5f * fov));
 		float a = q / aspectRatio;
@@ -88,9 +98,9 @@ namespace Advent3D { namespace Maths {
 		return result;
 	}
 
-	Matrix4x4 Matrix4x4::Translation(const Vector3& translation)
+	mat4 mat4::Translation(const vec3& translation)
 	{
-		Matrix4x4 result(1.0f);
+		mat4 result(1.0f);
 
 		result.elements[0 + 3 * 4] = translation.x;
 		result.elements[1 + 3 * 4] = translation.y;
@@ -99,9 +109,9 @@ namespace Advent3D { namespace Maths {
 		return result;
 	}
 
-	Matrix4x4 Matrix4x4::Rotation(float angle, const Vector3& axis)
+	mat4 mat4::Rotation(float angle, const vec3& axis)
 	{
-		Matrix4x4 result(1.0f);
+		mat4 result(1.0f);
 
 		float r = toRadians(angle);
 		float c = cos(r);
@@ -127,9 +137,9 @@ namespace Advent3D { namespace Maths {
 		return result;
 	}
 
-	Matrix4x4 Matrix4x4::Scale(const Vector3& scale)
+	mat4 mat4::Scale(const vec3& scale)
 	{
-		Matrix4x4 result(1.0f);
+		mat4 result(1.0f);
 
 		result.elements[0 + 0 * 4] = scale.x;
 		result.elements[1 + 1 * 4] = scale.y;

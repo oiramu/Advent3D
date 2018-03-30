@@ -2,9 +2,8 @@
 
 namespace Advent3D { namespace Maths {
 
-float toRadians(float degrees)
-{
-	return degrees * (M_PI / 180.0f);
-}
+#define PI 3.14159265358979323846
+
+	float toRadians(float degrees);
 
 } }

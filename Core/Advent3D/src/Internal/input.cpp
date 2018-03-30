@@ -34,9 +34,9 @@ bool Input::GetButton(Button button)
 	return Input::MouseButtons[value];
 }
 
-Maths::Vector2 Input::GetMousePosition()
+Maths::vec2 Input::GetMousePosition()
 {
-	return Maths::Vector2(Input::mx, Input::my);
+	return Maths::vec2(Input::mx, Input::my);
 }
 
 }

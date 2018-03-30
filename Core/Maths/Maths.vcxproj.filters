@@ -1,17 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="src\maths\linear algebra\linear_algebra.h" />
-    <ClInclude Include="src\maths\linear algebra\vectors\vector2.h" />
-    <ClInclude Include="src\maths\linear algebra\vectors\vector3.h" />
-    <ClInclude Include="src\maths\linear algebra\vectors\vector4.h" />
-    <ClInclude Include="src\maths\linear algebra\matrices\matrix4x4.h" />
     <ClInclude Include="src\maths\common.h" />
+    <ClInclude Include="src\maths\linear_algebra.h" />
+    <ClInclude Include="src\maths\linear algebra\vectors\vec2.h" />
+    <ClInclude Include="src\maths\linear algebra\vectors\vec3.h" />
+    <ClInclude Include="src\maths\linear algebra\vectors\vec4.h" />
+    <ClInclude Include="src\maths\linear algebra\matrices\mat4.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\maths\linear algebra\vectors\vector2.cpp" />
-    <ClCompile Include="src\maths\linear algebra\vectors\vector3.cpp" />
-    <ClCompile Include="src\maths\linear algebra\vectors\vector4.cpp" />
-    <ClCompile Include="src\maths\linear algebra\matrices\matrix4x4.cpp" />
+    <ClCompile Include="src\maths\linear algebra\vectors\vec2.cpp" />
+    <ClCompile Include="src\maths\linear algebra\vectors\vec3.cpp" />
+    <ClCompile Include="src\maths\linear algebra\vectors\vec4.cpp" />
+    <ClCompile Include="src\maths\linear algebra\matrices\mat4.cpp" />
+    <ClCompile Include="src\maths\common.cpp" />
   </ItemGroup>
 </Project>

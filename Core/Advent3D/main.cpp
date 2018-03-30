@@ -1,15 +1,13 @@
-#include "src\Internal\window.h"
-#include "maths\linear algebra\linear_algebra.h"
+#include "maths.h"
 
 int main()
 {
 	using namespace Advent3D;
-	using namespace Maths;
 
+	Maths::mat4 proj = Maths::mat4::Perspective(40.0f,16.0f/9.0f, 0.1f,100.0f);
 
-
-
-
+	std::cout << proj << std::endl;
+	
 	system("PAUSE");
 
 	return 0;
