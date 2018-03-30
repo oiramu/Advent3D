@@ -3,7 +3,7 @@
 #include <iostream>
 #include <math.h>
 
-namespace Advent3D { namespace Maths {
+namespace advent { namespace maths {
 
 struct vec2
 {

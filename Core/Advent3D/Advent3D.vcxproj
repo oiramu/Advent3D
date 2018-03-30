@@ -99,6 +99,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)Maths/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;gl3w.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -110,6 +111,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)Maths/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;gl3w.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -123,6 +125,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)Maths/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -138,6 +141,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)Maths/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -147,17 +151,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\internal\input.cpp" />
+    <ClCompile Include="src\internal\shader.cpp" />
     <ClCompile Include="src\internal\window.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\utils\file_utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\internal\input.h" />
+    <ClInclude Include="src\internal\shader.h" />
     <ClInclude Include="src\internal\window.h" />
+    <ClInclude Include="src\utils\file_utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Maths\Maths.vcxproj">
       <Project>{a235c931-2f03-4b34-aaa6-0a09b2d4fd74}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FS.fs" />
+    <None Include="VS.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

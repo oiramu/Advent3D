@@ -135,7 +135,6 @@
     <ClInclude Include="src\maths.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\maths\common.cpp" />
     <ClCompile Include="src\maths\linear algebra\matrices\mat4.cpp" />
     <ClCompile Include="src\maths\linear algebra\vectors\vec2.cpp" />
     <ClCompile Include="src\maths\linear algebra\vectors\vec3.cpp" />

@@ -1,6 +1,6 @@
 #include "mat4.h"
 
-namespace Advent3D { namespace Maths {
+namespace advent { namespace maths {
 
 	mat4::mat4()
 	{
@@ -86,7 +86,7 @@ namespace Advent3D { namespace Maths {
 	{
 		mat4 result(1.0f);
 
-		float q = 1.0f / tan(toRadians(0.5f * fov));
+		float q = 1.0f / tan((0.5f * fov));
 		float a = q / aspectRatio;
 		float b = (near + far) / (near - far);
 		float c = (2.0f * near * far) / (near - far);
@@ -115,7 +115,7 @@ namespace Advent3D { namespace Maths {
 	{
 		mat4 result(1.0f);
 
-		float r = toRadians(angle);
+		float r = (angle);
 		float c = cos(r);
 		float s = sin(r);
 		float omc = 1.0f - c;

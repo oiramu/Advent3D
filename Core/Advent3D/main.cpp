@@ -1,15 +1,17 @@
+#include "src\internal\window.h"
+#include "src\internal\shader.h"
 #include "maths.h"
 
 int main()
 {
-	using namespace Advent3D;
-	using namespace Maths;
+	using namespace advent;
+	using namespace graphics;
+	using namespace maths;
+	using namespace utils;
 
-	mat4 proj = mat4::perspective(40.0f, 16.0f / 9.0f, 0.1f, 100.0f);
-	std::cout << proj << std::endl;
+	Shader shader("VS.vs", "FS.fs");
+	shader.bind();
 
-
-	
 	system("PAUSE");
 
 	return 0;

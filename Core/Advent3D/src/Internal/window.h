@@ -9,7 +9,7 @@
 //glfw
 #include <GLFW\glfw3.h>
 
-namespace Advent3D { namespace Graphics {
+namespace advent { namespace graphics {
 
 class Window
 {

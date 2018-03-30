@@ -1,6 +1,6 @@
 #include "input.h"
 
-namespace Advent3D {
+namespace advent {
 
 bool Input::Keys[MAX_KEYS];
 bool Input::MouseButtons[MAX_MOUSE_BUTTONS];
@@ -34,9 +34,9 @@ bool Input::GetButton(Button button)
 	return Input::MouseButtons[value];
 }
 
-Maths::vec2 Input::GetMousePosition()
+maths::vec2 Input::GetMousePosition()
 {
-	return Maths::vec2(Input::mx, Input::my);
+	return maths::vec2(Input::mx, Input::my);
 }
 
 }

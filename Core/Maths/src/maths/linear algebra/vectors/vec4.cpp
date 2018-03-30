@@ -1,6 +1,6 @@
 #include "vec4.h"
 
-namespace Advent3D { namespace Maths {
+namespace advent { namespace maths {
 
 vec4::vec4()
 {

@@ -5,7 +5,7 @@
 #include "..\vectors\vec3.h"
 #include "..\vectors\vec4.h"
 
-namespace Advent3D { namespace Maths {
+namespace advent { namespace maths {
 
 struct mat4
 {

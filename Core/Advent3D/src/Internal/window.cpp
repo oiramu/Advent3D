@@ -1,6 +1,6 @@
 #include "window.h"
 
-namespace Advent3D { namespace Graphics {
+namespace advent { namespace graphics {
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {

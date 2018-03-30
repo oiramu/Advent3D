@@ -1,6 +1,6 @@
 #include "vec3.h"
 
-namespace Advent3D { namespace Maths {
+namespace advent { namespace maths {
 
 //constructors
 vec3::vec3()

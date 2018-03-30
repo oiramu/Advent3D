@@ -6,7 +6,7 @@
 //STL
 #include <iostream>
 
-namespace Advent3D {
+namespace advent {
 
 #define MAX_KEYS 1024
 #define MAX_MOUSE_BUTTONS 32
@@ -127,7 +127,7 @@ struct Input
 
 	static bool GetKey(KeyCode key);
 	static bool GetButton(Button button);
-	static Maths::vec2 GetMousePosition();
+	static maths::vec2 GetMousePosition();
 };
 
 }
