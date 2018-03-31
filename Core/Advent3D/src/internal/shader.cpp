@@ -1,42 +1,95 @@
 #include "shader.h"
 
-Shader::Shader(const char* vertexPath, const char* fragmentPath)
+namespace advent { namespace graphics {
+
+Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath, const char* computePath)
 {
-	const char* vShaderCode = advent::utils::read_file(vertexPath).c_str();
-	const char * fShaderCode = advent::utils::read_file(fragmentPath).c_str();
+	std::string VSCode = advent::utils::read_file(vertexPath);
+	std::string FSCode = advent::utils::read_file(fragmentPath);
+
+	const char* vShaderCode = VSCode.c_str();
+	const char * fShaderCode = FSCode.c_str();
 
 	unsigned int vertex;
 	unsigned int fragment;
+	unsigned int tesselation;
 	unsigned int geometry;
+	unsigned int compute;
 
 	int success;
 	char infoLog[512];
 
+	//VERTEX
 	vertex = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertex, 1, &vShaderCode, NULL);
 	glCompileShader(vertex);
-	CheckCompileErrors(vertex, "VERTEX");
+	CheckCompileErrors(vertex, SHADER_TYPE::VERTEX);
 
-
+	//FRAGMENT
 	fragment = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragment, 1, &fShaderCode, NULL);
 	glCompileShader(fragment);
-	CheckCompileErrors(fragment, "FRAGMENT");
+	CheckCompileErrors(fragment, SHADER_TYPE::FRAGMENT);
+
+	//COMPUTE
+	if (computePath != nullptr)
+	{
+		std::string CSCode = advent::utils::read_file(computePath);
+		const char* cShaderCode = CSCode.c_str();
+
+		compute = glCreateShader(GL_COMPUTE_SHADER);
+		
+		glShaderSource(compute, 1, &cShaderCode, NULL);
+		glCompileShader(compute);
+		
+		CheckCompileErrors(compute, SHADER_TYPE::COMPUTE);
+	}
+
+	//GEOMETRY
+	if (geometryPath != nullptr)
+	{
+		std::string GSCode = advent::utils::read_file(geometryPath);
+		const char* gShaderCode = GSCode.c_str();
+
+		geometry = glCreateShader(GL_GEOMETRY_SHADER);
+		
+		glShaderSource(geometry, 1, &gShaderCode, NULL);
+		glCompileShader(geometry);
+		
+		CheckCompileErrors(geometry, SHADER_TYPE::GEOMETRY);
+	}
 
 	m_ID = glCreateProgram();
 
 	glAttachShader(m_ID, vertex);
 	glAttachShader(m_ID, fragment);
 
+	if (geometryPath != nullptr)
+		glAttachShader(m_ID, geometry);
+
+	if (computePath != nullptr)
+		glAttachShader(m_ID, compute);
+
 	glLinkProgram(m_ID);
-	CheckCompileErrors(m_ID, "PROGRAM");
+	CheckCompileErrors(m_ID, SHADER_TYPE::PROGRAM);
 
 	glDetachShader(m_ID, vertex);
 	glDetachShader(m_ID, fragment);
 
+	if (geometryPath != nullptr)
+		glDetachShader(m_ID, geometry);
+
+	if (computePath != nullptr)
+		glDetachShader(m_ID, compute);
+
 	glDeleteShader(vertex);
 	glDeleteShader(fragment);
 
+	if (geometryPath != nullptr)
+		glDeleteShader(geometry);
+
+	if (computePath != nullptr)
+		glDeleteShader(compute);
 }
 
 void Shader::bind() const
@@ -44,63 +97,64 @@ void Shader::bind() const
 	glUseProgram(m_ID);
 }
 
-void Shader::SetBool(const std::string &name, bool value) const
+void Shader::setBool(const std::string &name, bool value) const
 {
 	glUniform1i(glGetUniformLocation(m_ID, name.c_str()), (int)value);
 }
 
-void Shader::SetInt(const std::string &name, int value) const
+void Shader::setInt(const std::string &name, int value) const
 {
 	glUniform1i(glGetUniformLocation(m_ID, name.c_str()), value);
 }
 
-void Shader::SetFloat(const std::string &name, float value) const
+void Shader::setFloat(const std::string &name, float value) const
 {
 	glUniform1f(glGetUniformLocation(m_ID, name.c_str()), value);
 }
 
-void Shader::SetVec2(const std::string &name, const advent::maths::vec2 &vec) const
+void Shader::setVec2(const std::string &name, const advent::maths::vec2 &vec) const
 {
 	glUniform2f(glGetUniformLocation(m_ID, name.c_str()), vec.x, vec.y);
 }
 
-void Shader::SetVec3(const std::string &name, const advent::maths::vec3 &vec) const
+void Shader::setVec3(const std::string &name, const advent::maths::vec3 &vec) const
 {
 	glUniform3f(glGetUniformLocation(m_ID, name.c_str()), vec.x, vec.y, vec.z);
 }
 
-void Shader::SetVec4(const std::string &name, const advent::maths::vec4 &vec) const
+void Shader::setVec4(const std::string &name, const advent::maths::vec4 &vec) const
 {
 	glUniform4f(glGetUniformLocation(m_ID, name.c_str()), vec.x, vec.y, vec.z, vec.w);
 }
 
-void Shader::SetMat4(const std::string &name, const advent::maths::mat4 &mat) const
+void Shader::setMat4(const std::string &name, const advent::maths::mat4 &mat) const
 {
 	glUniformMatrix4fv(glGetUniformLocation(m_ID, name.c_str()), 1, GL_FALSE, mat.elements);
 }
 
-//TODO: come up with a better solution and finish implementing uniforms
-void Shader::CheckCompileErrors(GLuint shader, std::string type)
+void Shader::CheckCompileErrors(unsigned int shader, const SHADER_TYPE& type) const
 {
-	GLint success;
-	GLchar infoLog[1024];
+	int result;
+	char infoLog[1024];
 
-	if (type != "PROGRAM")
+	if (type != SHADER_TYPE::PROGRAM)
 	{
-		glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
-		if (!success)
+		glGetShaderiv(shader, GL_COMPILE_STATUS, &result);
+		if (!result)
 		{
 			glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-			std::cout << "SHADER::COMPILER_ERROR::" << type << ": failed to compile\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
+			printf("\n %s", infoLog);
 		}
 	}
+
 	else
 	{
-		glGetProgramiv(shader, GL_LINK_STATUS, &success);
-		if (!success)
+		glGetProgramiv(shader, GL_LINK_STATUS, &result);
+		if (!result)
 		{
 			glGetProgramInfoLog(shader, 1024, NULL, infoLog);
-			std::cout << "SHADER::PROGRAM_LINKING_ERROR:: of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
+			printf("\n Program linking error: \n\n %s ", infoLog);
 		}
 	}
 }
+} }

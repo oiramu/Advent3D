@@ -2,7 +2,7 @@
 
 namespace advent { namespace maths {
 
-float PI = 3.14159265358979323846f;
+#define PI = 3.14159265358979323846f;
 
 template <typename T>
 inline T ToRadians(const T& degrees)

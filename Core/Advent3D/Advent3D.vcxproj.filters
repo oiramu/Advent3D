@@ -24,10 +24,10 @@
     <ClCompile Include="src\internal\window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\internal\shader.cpp">
+    <ClCompile Include="src\utils\file_utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\utils\file_utils.cpp">
+    <ClCompile Include="src\internal\shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

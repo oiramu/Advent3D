@@ -78,12 +78,12 @@ bool Window::Init()
 	return true;
 }
 
-void Window::SetClearColor(float r, float g, float b)
+void Window::SetClearColor(float r, float g, float b) const
 {
 	glClearColor(r, g, b, 1.0f);
 }
 
-void Window::Clear()
+void Window::Clear() const
 {
 	//clear the color and depth buffer bit
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -94,7 +94,7 @@ void Window::Clear()
 void Window::Update()
 {
 	//calculate the deltatime
-	float m_LastFrame = 0.0f;
+
 	float currentFrame = glfwGetTime();
 
 	deltaTime = currentFrame - m_LastFrame;

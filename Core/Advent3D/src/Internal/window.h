@@ -17,16 +17,16 @@ public:
 
 	Window(const char* title, float width, float heigth);
 
-	bool Open() { return !glfwWindowShouldClose(m_Window); }
+	inline bool Open() const { return !glfwWindowShouldClose(m_Window); }
 	
-	void Clear();
+	void Clear() const;
 	void Update();
-	void SetClearColor(float r, float b, float g);
+	void SetClearColor(float r, float b, float g) const;
 
-	float GetWidth() { return m_Width; }
-	float GetHeight() { return m_Height; }
+	inline float GetWidth() const { return m_Width; }
+	inline float GetHeight() const { return m_Height; }
 	
-	float GetRatio() { return m_Width / m_Height; }
+	inline float GetRatio() const { return m_Width / m_Height; }
 
 	inline GLFWwindow* getHandle() const { return m_Window; }
 
@@ -41,6 +41,8 @@ private:
 	const char* m_Title;
 	
 	float m_Width, m_Height;
+
+	float m_LastFrame = 0.0f;
 
 	bool Init();
 

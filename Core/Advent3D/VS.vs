@@ -2,7 +2,9 @@
 
 layout (location = 0) in vec4 position;
 
-int main()
+uniform mat4 pr_matrix;
+
+void main()
 {
-	glPosition = position;
+	gl_Position = pr_matrix * position;
 }
