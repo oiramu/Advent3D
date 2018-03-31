@@ -34,19 +34,15 @@ int main()
 
 	mat4 pr_matrix = mat4::ortho(0.0f, 16.0, 0.0f, 9.0f, -1.0f, 1.0f);
 
-	std::cout << pr_matrix << "\n";
-
-
-
 	while (win.Open())
 	{
 		win.Clear();
 		
-
+		
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 		shader.bind();
 		shader.setMat4("pr_matrix", pr_matrix);
-
+		
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 
 		win.Update();
