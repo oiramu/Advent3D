@@ -4,6 +4,4 @@ Advent3D is a game engine currently under development. The goal is to make the e
 
 ## Documentation
 
-navigate through the website linked in the tags above ^
-						      |
-						      |
+https://gabrielevierti.github.io/Advent3D/
