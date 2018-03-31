@@ -69,7 +69,7 @@ enum class KeyCode : unsigned int
 	Space = 32
 };
 
-enum class Button : unsigned int
+enum class MouseButton : unsigned int
 {
 	Left = 0,
 	Right = 1,
@@ -83,26 +83,6 @@ enum class Button : unsigned int
 	B6 = 5,
 	B7 = 6,
 	B8 = 7
-};
-
-enum class GamePad : unsigned int
-{
-	B1 = 0,
-	B2 = 1,
-	B3 = 2,
-	B4 = 3,
-	B5 = 4,
-	B6 = 5,
-	B7 = 6,
-	B8 = 7,
-	B9 = 8,
-	B10 = 9,
-	B11 = 10,
-	B12 = 11,
-	B13 = 12,
-	B14 = 13,
-	B15 = 14,
-	B16 = 15
 };
 
 struct Input
@@ -125,9 +105,9 @@ struct Input
 		}
 	}
 
-	static bool GetKey(KeyCode key);
-	static bool GetButton(Button button);
-	static maths::vec2 GetMousePosition();
+	static bool getKey(KeyCode key);
+	static bool getMouseButton(MouseButton button);
+	static maths::vec2 getMousePosition();
 };
 
 }

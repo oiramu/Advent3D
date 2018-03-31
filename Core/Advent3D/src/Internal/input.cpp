@@ -8,7 +8,7 @@ bool Input::MouseButtons[MAX_MOUSE_BUTTONS];
 double Input::mx = 0;
 double Input::my = 0;
 
-bool Input::GetKey(KeyCode key)
+bool Input::getKey(KeyCode key)
 {
 	unsigned int value = static_cast<unsigned int>(key);
 
@@ -21,7 +21,7 @@ bool Input::GetKey(KeyCode key)
 	return Input::Keys[value];
 }
 
-bool Input::GetButton(Button button)
+bool Input::getMouseButton(MouseButton button)
 {
 	unsigned int value = static_cast<unsigned int>(button);
 
@@ -34,7 +34,7 @@ bool Input::GetButton(Button button)
 	return Input::MouseButtons[value];
 }
 
-maths::vec2 Input::GetMousePosition()
+maths::vec2 Input::getMousePosition()
 {
 	return maths::vec2(Input::mx, Input::my);
 }
