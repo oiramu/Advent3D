@@ -9,8 +9,3 @@
 
 //matrices
 #include "linear algebra\matrices\mat4.h"
-
-//quaternions
-//
-
-//GEOMETRY
