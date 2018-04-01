@@ -98,7 +98,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)Maths/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Maths/src/;$(SolutionDir)Advent3D/src/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -110,7 +110,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)Maths/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Maths/src/;$(SolutionDir)Advent3D/src/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -124,7 +124,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)Maths/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Maths/src/;$(SolutionDir)Advent3D/src/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -144,7 +144,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)Maths/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Maths/src/;$(SolutionDir)Advent3D/src/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -154,16 +154,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\internal\input.cpp" />
-    <ClCompile Include="src\internal\shader.cpp" />
-    <ClCompile Include="src\internal\window.cpp" />
+    <ClCompile Include="src\internal\graphics\buffers\buffer.cpp" />
+    <ClCompile Include="src\internal\application\input.cpp" />
+    <ClCompile Include="src\internal\graphics\shader.cpp" />
+    <ClCompile Include="src\internal\application\window.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\utils\file_utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\internal\input.h" />
-    <ClInclude Include="src\internal\shader.h" />
-    <ClInclude Include="src\internal\window.h" />
+    <ClInclude Include="src\internal\graphics\buffers\buffer.h" />
+    <ClInclude Include="src\internal\application\input.h" />
+    <ClInclude Include="src\internal\graphics\shader.h" />
+    <ClInclude Include="src\internal\application\window.h" />
     <ClInclude Include="src\utils\file_utils.h" />
   </ItemGroup>
   <ItemGroup>

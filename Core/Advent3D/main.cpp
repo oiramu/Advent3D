@@ -1,6 +1,8 @@
-#include "src\internal\window.h"
-#include "src\internal\shader.h"
-#include "maths.h"
+#include "src\internal\application\window.h"
+#include "src\internal\graphics\shader.h"
+#include "src\internal\graphics\buffers\buffer.h"
+
+#include <maths\maths.h>
 
 #include <string>
 

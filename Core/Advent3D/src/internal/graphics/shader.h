@@ -1,8 +1,8 @@
 #pragma once
 
 #include <GL\gl3w.h>
-#include "maths\linear_algebra.h"
-#include "..\utils\file_utils.h"
+#include <maths\linear_algebra.h>
+#include <utils\file_utils.h>
 #include <iostream>
 
 namespace advent { namespace graphics {
@@ -11,11 +11,11 @@ class Shader
 {
 private:
 
-	unsigned int m_ID;
+	GLuint m_ID;
 
 	enum SHADER_TYPE { PROGRAM, VERTEX, FRAGMENT, GEOMETRY, COMPUTE };
 
-	void CheckCompileErrors(unsigned int shader, const SHADER_TYPE& type) const;
+	void CheckCompileErrors(GLuint shader, const SHADER_TYPE& type) const;
 
 public:
 

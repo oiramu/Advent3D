@@ -10,14 +10,14 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
 	const char* vShaderCode = VSCode.c_str();
 	const char * fShaderCode = FSCode.c_str();
 
-	unsigned int vertex;
-	unsigned int fragment;
-	unsigned int tesselation;
-	unsigned int geometry;
-	unsigned int compute;
+	GLuint vertex;
+	GLuint fragment;
+	GLuint tesselation;
+	GLuint geometry;
+	GLuint compute;
 
-	int success;
-	char infoLog[512];
+	GLint success;
+	GLchar infoLog[512];
 
 	//VERTEX
 	vertex = glCreateShader(GL_VERTEX_SHADER);
@@ -132,10 +132,10 @@ void Shader::setMat4(const std::string &name, const advent::maths::mat4 &mat) co
 	glUniformMatrix4fv(glGetUniformLocation(m_ID, name.c_str()), 1, GL_FALSE, mat.elements);
 }
 
-void Shader::CheckCompileErrors(unsigned int shader, const SHADER_TYPE& type) const
+void Shader::CheckCompileErrors(GLuint shader, const SHADER_TYPE& type) const
 {
-	int result;
-	char infoLog[1024];
+	GLint result;
+	GLchar infoLog[1024];
 
 	if (type != SHADER_TYPE::PROGRAM)
 	{
