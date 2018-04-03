@@ -18,6 +18,8 @@ namespace advent { namespace graphics {
 
 		void bind() const;
 
+		void unbind() const;
+
 		inline GLuint getComponentCount() const { return m_ComponentCount; }
 
 	};

@@ -1,10 +1,11 @@
 #include "src\internal\application\window.h"
 #include "src\internal\graphics\shader.h"
 #include "src\internal\graphics\buffers\buffer.h"
+#include "src\internal\graphics\buffers\index_buffer.h"
+#include "src\internal\graphics\buffers\vertex_array.h"
+
 
 #include <maths\maths.h>
-
-#include <string>
 
 int main()
 {
@@ -16,36 +17,38 @@ int main()
 	Window win("test", 960, 540);
 	Shader shader("VS.vs", "FS.fs");
 
-	float vertices[] =
+	GLfloat vertices[] =
 	{
-		4,3,
-		12,3,
-		4,6,
-		4,6,
-		12,6,
-		12,3
+		0,0,0,
+		0,3,0,
+		8,3,0,
+		8,0,0
 	};
 
-	unsigned int VBO;
-	
-	glGenBuffers(1, &VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, (void*)0);
-	glEnableVertexAttribArray(0);
+	GLushort indices[] = {0,1,2,2,3,0};
 
-	mat4 pr_matrix = mat4::ortho(0.0f, 16.0, 0.0f, 9.0f, -1.0f, 1.0f);
+	VertexArray VAO;
+
+	Buffer* VBO = new Buffer(vertices, 4 * 3, 3);
+	IndexBuffer IBO(indices,6);
+	
+	VAO.addBuffer(VBO, 0);
+
+	mat4 ortho = mat4::ortho(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
+
+	shader.bind();
+	shader.setMat4("pr_matrix", ortho);
+	shader.setMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
 
 	while (win.Open())
 	{
 		win.Clear();
 		
-		
-		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-		shader.bind();
-		shader.setMat4("pr_matrix", pr_matrix);
-		
-		glDrawArrays(GL_TRIANGLES, 0, 6);
+		VAO.bind();
+		IBO.bind();
+		glDrawElements(GL_TRIANGLES, IBO.getCount(), GL_UNSIGNED_SHORT, nullptr);
+		IBO.unbind();
+		VAO.unbind();
 
 		win.Update();
 	}

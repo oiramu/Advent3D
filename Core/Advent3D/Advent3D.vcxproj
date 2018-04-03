@@ -156,6 +156,8 @@
   <ItemGroup>
     <ClCompile Include="src\internal\graphics\buffers\buffer.cpp" />
     <ClCompile Include="src\internal\application\input.cpp" />
+    <ClCompile Include="src\internal\graphics\buffers\index_buffer.cpp" />
+    <ClCompile Include="src\internal\graphics\buffers\vertex_array.cpp" />
     <ClCompile Include="src\internal\graphics\shader.cpp" />
     <ClCompile Include="src\internal\application\window.cpp" />
     <ClCompile Include="main.cpp" />
@@ -164,6 +166,8 @@
   <ItemGroup>
     <ClInclude Include="src\internal\graphics\buffers\buffer.h" />
     <ClInclude Include="src\internal\application\input.h" />
+    <ClInclude Include="src\internal\graphics\buffers\index_buffer.h" />
+    <ClInclude Include="src\internal\graphics\buffers\vertex_array.h" />
     <ClInclude Include="src\internal\graphics\shader.h" />
     <ClInclude Include="src\internal\application\window.h" />
     <ClInclude Include="src\utils\file_utils.h" />
