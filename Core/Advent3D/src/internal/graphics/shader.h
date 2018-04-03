@@ -20,6 +20,7 @@ private:
 public:
 
 	Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath = nullptr, const char* computePath = nullptr);
+	~Shader();
 
 	void bind() const;
 

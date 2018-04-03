@@ -39,6 +39,12 @@
     <ClCompile Include="src\internal\graphics\buffers\vertex_array.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\internal\graphics\2D\renderable2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\internal\graphics\2D\renderers\simple_renderer2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utils\file_utils.h">
@@ -60,6 +66,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\internal\graphics\buffers\vertex_array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\internal\graphics\2D\renderable2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\internal\graphics\2D\renderers\renderer2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\internal\graphics\2D\renderers\simple_renderer2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

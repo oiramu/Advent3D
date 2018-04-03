@@ -154,6 +154,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\internal\graphics\2D\renderable2D.cpp" />
+    <ClCompile Include="src\internal\graphics\2D\renderers\simple_renderer2D.cpp" />
     <ClCompile Include="src\internal\graphics\buffers\buffer.cpp" />
     <ClCompile Include="src\internal\application\input.cpp" />
     <ClCompile Include="src\internal\graphics\buffers\index_buffer.cpp" />
@@ -164,6 +166,9 @@
     <ClCompile Include="src\utils\file_utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\internal\graphics\2D\renderable2D.h" />
+    <ClInclude Include="src\internal\graphics\2D\renderers\renderer2D.h" />
+    <ClInclude Include="src\internal\graphics\2D\renderers\simple_renderer2D.h" />
     <ClInclude Include="src\internal\graphics\buffers\buffer.h" />
     <ClInclude Include="src\internal\application\input.h" />
     <ClInclude Include="src\internal\graphics\buffers\index_buffer.h" />
