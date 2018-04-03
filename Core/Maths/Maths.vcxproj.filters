@@ -8,11 +8,15 @@
     <ClInclude Include="src\maths\linear algebra\vectors\vec4.h" />
     <ClInclude Include="src\maths\linear algebra\matrices\mat4.h" />
     <ClInclude Include="src\maths\maths.h" />
+    <ClInclude Include="src\maths\linear algebra\matrices\mat3.h" />
+    <ClInclude Include="src\maths\linear algebra\matrices\mat2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\maths\linear algebra\vectors\vec2.cpp" />
     <ClCompile Include="src\maths\linear algebra\vectors\vec3.cpp" />
     <ClCompile Include="src\maths\linear algebra\vectors\vec4.cpp" />
     <ClCompile Include="src\maths\linear algebra\matrices\mat4.cpp" />
+    <ClCompile Include="src\maths\linear algebra\matrices\mat3.cpp" />
+    <ClCompile Include="src\maths\linear algebra\matrices\mat2.cpp" />
   </ItemGroup>
 </Project>

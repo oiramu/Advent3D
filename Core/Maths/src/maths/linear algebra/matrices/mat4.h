@@ -1,6 +1,6 @@
 #pragma once
 
-#include <math.h>
+//maths
 #include "..\..\common.h"
 #include "..\vectors\vec3.h"
 #include "..\vectors\vec4.h"
@@ -10,7 +10,11 @@ namespace advent { namespace maths {
 struct mat4
 {
 	//data
-	float elements[4*4];
+	union
+	{
+		float elements[4*4];
+		vec4 columns[4];
+	};
 
 	//constructors
 	mat4();
@@ -31,8 +35,6 @@ struct mat4
 	mat4& multiply(const mat4& other);
 	friend mat4 operator* (mat4 left, const mat4& right);
 	mat4& operator+= (const mat4& other);
-
-	friend std::ostream& operator<< (std::ostream& stream, const mat4& vector);
 };
 
 } }

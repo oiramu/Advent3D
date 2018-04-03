@@ -55,18 +55,6 @@ namespace advent { namespace maths {
 		return multiply(other);
 	}
 
-	std::ostream& operator<< (std::ostream& stream, const mat4& matrix)
-	{
-		stream << "mat4: \n\n";
-
-		stream << " | " << matrix.elements[0 + 0 * 4] << " , " << matrix.elements[1 + 0 * 4] << " , " << matrix.elements[2 + 0 * 4] << " , " << matrix.elements[3 + 0 * 4] << " |\n";
-		stream << " | " << matrix.elements[0 + 1 * 4] << " , " << matrix.elements[1 + 1 * 4] << " , " << matrix.elements[2 + 1 * 4] << " , " << matrix.elements[3 + 1 * 4] << " |\n";
-		stream << " | " << matrix.elements[0 + 2 * 4] << " , " << matrix.elements[1 + 2 * 4] << " , " << matrix.elements[2 + 2 * 4] << " , " << matrix.elements[3 + 2 * 4] << " |\n";
-		stream << " | " << matrix.elements[0 + 3 * 4] << " , " << matrix.elements[1 + 3 * 4] << " , " << matrix.elements[2 + 3 * 4] << " , " << matrix.elements[3 + 3 * 4] << " |\n\n";
-
-		return stream;
-	}
-
 	mat4 mat4::ortho(float left, float right, float bottom, float top, float near, float far)
 	{
 		mat4 result(1.0f);

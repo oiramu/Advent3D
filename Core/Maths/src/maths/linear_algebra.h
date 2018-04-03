@@ -9,3 +9,5 @@
 
 //matrices
 #include "linear algebra\matrices\mat4.h"
+#include "linear algebra\matrices\mat3.h"
+#include "linear algebra\matrices\mat2.h"
