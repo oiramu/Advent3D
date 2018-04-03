@@ -1,5 +1,6 @@
 #pragma once
 
+//opengl
 #include <GL\gl3w.h>
 
 namespace advent { namespace graphics {

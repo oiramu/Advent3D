@@ -12,12 +12,8 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
 
 	GLuint vertex;
 	GLuint fragment;
-	GLuint tesselation;
 	GLuint geometry;
 	GLuint compute;
-
-	GLint success;
-	GLchar infoLog[512];
 
 	//VERTEX
 	vertex = glCreateShader(GL_VERTEX_SHADER);

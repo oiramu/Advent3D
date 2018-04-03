@@ -1,6 +1,9 @@
 #pragma once
 
+//renderer super class
 #include "renderer2D.h"
+
+//double ended queue
 #include <deque>
 
 namespace advent { namespace graphics {

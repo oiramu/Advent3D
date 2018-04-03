@@ -1,9 +1,13 @@
 #pragma once
 
+//opengl
 #include <GL\gl3w.h>
+
+//maths
 #include <maths\linear_algebra.h>
+
+//file reading 
 #include <utils\file_utils.h>
-#include <iostream>
 
 namespace advent { namespace graphics {
 

@@ -71,19 +71,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)Libs\lib\x86\Managed\</OutDir>
-    <IntDir>$(SolutionDir)Libs\lib\x86\Managed\intermidiates</IntDir>
+    <IntDir>$(SolutionDir)Libs\lib\x86\Managed\intermidiates\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)Libs\lib\x86\Managed\</OutDir>
-    <IntDir>$(SolutionDir)Libs\lib\x86\Managed\intermidiates</IntDir>
+    <IntDir>$(SolutionDir)Libs\lib\x86\Managed\intermidiates\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Libs\lib\x64\Managed\</OutDir>
-    <IntDir>$(SolutionDir)Libs\lib\x64\Managed\intermidiates</IntDir>
+    <IntDir>$(SolutionDir)Libs\lib\x64\Managed\intermidiates\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Libs\lib\x64\Managed\</OutDir>
-    <IntDir>$(SolutionDir)Libs\lib\x64\Managed\intermidiates</IntDir>
+    <IntDir>$(SolutionDir)Libs\lib\x64\Managed\intermidiates\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

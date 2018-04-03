@@ -1,11 +1,14 @@
 #pragma once
 
+//vertex array and buffers
 #include "internal\graphics\buffers\buffer.h"
 #include "internal\graphics\buffers\index_buffer.h"
 #include "internal\graphics\buffers\vertex_array.h"
 
+//shader
 #include "internal\graphics\shader.h"
 
+//maths
 #include "maths\maths.h"
 
 namespace advent { namespace graphics {

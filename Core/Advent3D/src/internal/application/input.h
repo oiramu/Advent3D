@@ -11,6 +11,7 @@ namespace advent {
 #define MAX_KEYS 1024
 #define MAX_MOUSE_BUTTONS 32
 
+//keyboard keys
 enum class KeyCode : unsigned int
 {
 	A = 65,
@@ -69,6 +70,7 @@ enum class KeyCode : unsigned int
 	Space = 32
 };
 
+//mouse buttons
 enum class MouseButton : unsigned int
 {
 	Left = 0,

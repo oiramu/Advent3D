@@ -1,3 +1,5 @@
+//DISCLAIMER: this file is used to TEST the engine's features. This file is, in fact, not part of the engine source code.  
+
 #include "src\internal\application\window.h"
 #include "src\internal\graphics\shader.h"
 #include "src\internal\graphics\buffers\buffer.h"

@@ -2,6 +2,7 @@
 
 namespace advent {
 
+//init static members
 bool Input::Keys[MAX_KEYS];
 bool Input::MouseButtons[MAX_MOUSE_BUTTONS];
 
@@ -14,7 +15,7 @@ bool Input::getKey(KeyCode key)
 
 	if (value >= MAX_KEYS)
 	{
-		std::cout << "The keycode specified is greater than the array can hold" << std::endl;
+		std::cout << "The keycode specified is greater than the maximum number the array can hold (Out of range exception)" << std::endl;
 		return false;
 	}
 
@@ -27,7 +28,7 @@ bool Input::getMouseButton(MouseButton button)
 
 	if (value >= MAX_MOUSE_BUTTONS)
 	{
-		std::cout << "the button specified is greater than the array can hold" << std::endl;
+		std::cout << "the button specified is greater than the maximum number the array can hold (Out of range exception)" << std::endl;
 		return false;
 	}
 

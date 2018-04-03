@@ -1,7 +1,12 @@
 #pragma once
 
+//renderable2D
 #include "..\renderable2D.h"
+
+//maths
 #include "maths\maths.h"
+
+//opengl
 #include <GL\gl3w.h>
 
 namespace advent { namespace graphics {
