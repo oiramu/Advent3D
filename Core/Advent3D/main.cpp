@@ -23,8 +23,7 @@ int main()
 	shader.setMat4("pr_matrix", ortho);
 
 	Renderable2D sprite(vec3(0, 0, 0), vec2(2, 2), vec4(1.0f, 0.0f, 0.0f, 1.0f));
-	//TODO: INPUT MOUSE POSITION BUG!!
-
+	
 	while (win.Open())
 	{
 		win.Clear();

@@ -34,15 +34,6 @@ Window::Window(const char* title, float width, float heigth)
 
 bool Window::Init()
 {
-	//set the callbacks
-	glfwSetFramebufferSizeCallback(m_Window, framebuffer_size_callback);
-
-	glfwSetKeyCallback(m_Window, key_callback);
-
-	glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
-
-	glfwSetCursorPosCallback(m_Window, cursor_position_callback);
-
 	//init glfw
 	if (!glfwInit())
 	{
@@ -53,7 +44,16 @@ bool Window::Init()
 	//create the window
 	m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, NULL, NULL);
 
+	//set the callbacks
 	glfwSetWindowUserPointer(m_Window, this);
+
+	glfwSetFramebufferSizeCallback(m_Window, framebuffer_size_callback);
+
+	glfwSetKeyCallback(m_Window, key_callback);
+
+	glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
+
+	glfwSetCursorPosCallback(m_Window, cursor_position_callback);
 
 	//check if the window has been created successfully
 	if (!m_Window)
