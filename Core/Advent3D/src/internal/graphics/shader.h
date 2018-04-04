@@ -28,19 +28,23 @@ public:
 
 	void bind() const;
 
-	void setBool(const std::string &name, bool value) const;
+	void setBool(const std::string& name, bool value) const;
 
-	void setInt(const std::string &name, int value) const;
+	void setInt(const std::string& name, int value) const;
 
-	void setFloat(const std::string &name, float value) const;
+	void setFloat(const std::string& name, float value) const;
 
-	void setVec2(const std::string &name, const advent::maths::vec2 &vec) const;
+	void setVec2(const std::string& name, const maths::vec2 &vec) const;
 
-	void setVec3(const std::string &name, const advent::maths::vec3 &vec) const;
+	void setVec3(const std::string& name, const maths::vec3 &vec) const;
 
-	void setVec4(const std::string &name, const advent::maths::vec4 &vec) const;
+	void setVec4(const std::string& name, const maths::vec4 &vec) const;
 
-	void setMat4(const std::string &name, const advent::maths::mat4 &mat) const;
+	void setMat2(const std::string& name, const maths::mat2& mat, GLboolean transpose = GL_FALSE) const;
+
+	void setMat3(const std::string& name, const maths::mat3& mat, GLboolean transpose = GL_FALSE) const;
+
+	void setMat4(const std::string &name, const maths::mat4 &mat, GLboolean transpose = GL_FALSE) const;
 
 };
 } }

@@ -24,31 +24,19 @@
     <ClCompile Include="src\internal\graphics\shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\internal\graphics\buffers\buffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\internal\application\input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\internal\application\window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\internal\graphics\buffers\index_buffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\internal\graphics\buffers\vertex_array.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\internal\graphics\2D\renderable2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\internal\graphics\2D\renderers\batch_renderer2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\internal\graphics\2D\static_sprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\internal\graphics\2D\sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\internal\graphics\2D\batch_renderer2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,34 +47,19 @@
     <ClInclude Include="src\internal\graphics\shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\internal\graphics\buffers\buffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\internal\application\input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\internal\application\window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\internal\graphics\buffers\index_buffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\internal\graphics\buffers\vertex_array.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\internal\graphics\2D\renderable2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\internal\graphics\2D\renderers\batch_renderer2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\internal\graphics\2D\renderers\renderer2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\internal\graphics\2D\static_sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\internal\graphics\2D\sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\internal\graphics\2D\batch_renderer2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -123,9 +123,19 @@ void Shader::setVec4(const std::string &name, const advent::maths::vec4 &vec) co
 	glUniform4f(glGetUniformLocation(m_ID, name.c_str()), vec.x, vec.y, vec.z, vec.w);
 }
 
-void Shader::setMat4(const std::string &name, const advent::maths::mat4 &mat) const
+void Shader::setMat2(const std::string& name, const maths::mat2& mat, GLboolean transpose) const
 {
-	glUniformMatrix4fv(glGetUniformLocation(m_ID, name.c_str()), 1, GL_FALSE, mat.elements);
+	glUniformMatrix2fv(glGetUniformLocation(m_ID, name.c_str()), 1, transpose, mat.elements);
+}
+
+void Shader::setMat3(const std::string& name, const maths::mat3& mat, GLboolean transpose) const
+{
+	glUniformMatrix3fv(glGetUniformLocation(m_ID, name.c_str()), 1, transpose, mat.elements);
+}
+
+void Shader::setMat4(const std::string& name, const maths::mat4& mat, GLboolean transpose) const
+{
+	glUniformMatrix4fv(glGetUniformLocation(m_ID, name.c_str()), 1, transpose, mat.elements);
 }
 
 void Shader::CheckCompileErrors(GLuint shader, const SHADER_TYPE& type) const
