@@ -9,6 +9,8 @@
 //glfw
 #include <GLFW\glfw3.h>
 
+#include "utils\timer.h"
+
 namespace advent { namespace graphics {
 
 class Window
@@ -28,10 +30,6 @@ public:
 	
 	inline float GetRatio() const { return m_Width / m_Height; }
 
-	inline GLFWwindow* getHandle() const { return m_Window; }
-
-	float deltaTime = 0.0f;
-
 	~Window();
 
 private:
@@ -42,7 +40,10 @@ private:
 	
 	float m_Width, m_Height;
 
-	float m_LastFrame = 0.0f;
+	//timer class used to calculate the frames per second
+	utils::Timer m_Time;
+	int m_Frames = 0;
+	float m_Timer = 0;
 
 	bool Init();
 

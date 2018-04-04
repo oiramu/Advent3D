@@ -93,18 +93,21 @@ void Window::Clear() const
 
 void Window::Update()
 {
-	//calculate the deltatime
-
-	float currentFrame = glfwGetTime();
-
-	deltaTime = currentFrame - m_LastFrame;
-	m_LastFrame = currentFrame;
-
 	//reset width and height
 	glfwGetWindowSize(m_Window, (int*)&m_Width, (int*)&m_Height);
 
 	//swap the buffers
 	glfwSwapBuffers(m_Window);
+
+	m_Frames++;
+
+	//once per second
+	if (m_Time.elapsed() - m_Timer > 1.0f)
+	{
+		m_Timer += 1.0f;
+		printf("%d fps \n", m_Frames);
+		m_Frames = 0;
+	}
 }
 
 Window::~Window()

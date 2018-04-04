@@ -62,6 +62,9 @@
     <ClInclude Include="src\internal\graphics\2D\batch_renderer2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\utils\timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="FS.fs" />

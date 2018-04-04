@@ -171,6 +171,7 @@
     <ClInclude Include="src\internal\graphics\shader.h" />
     <ClInclude Include="src\internal\application\window.h" />
     <ClInclude Include="src\utils\file_utils.h" />
+    <ClInclude Include="src\utils\timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Maths\Maths.vcxproj">
