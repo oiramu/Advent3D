@@ -41,9 +41,9 @@ private:
 	float m_Width, m_Height;
 
 	//timer class used to calculate the frames per second
-	utils::Timer m_Time;
+	utils::Timer m_Timer;
 	int m_Frames = 0;
-	float m_Timer = 0;
+	float m_Time = 0;
 
 	bool Init();
 

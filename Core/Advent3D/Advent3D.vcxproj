@@ -162,6 +162,7 @@
     <ClCompile Include="src\internal\application\window.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\utils\file_utils.cpp" />
+    <ClCompile Include="src\utils\timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\internal\graphics\2D\renderable2D.h" />

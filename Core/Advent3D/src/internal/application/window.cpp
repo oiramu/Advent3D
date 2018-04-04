@@ -102,9 +102,9 @@ void Window::Update()
 	m_Frames++;
 
 	//once per second
-	if (m_Time.elapsed() - m_Timer > 1.0f)
+	if (m_Timer.elapsed() - m_Time > 1.0f)
 	{
-		m_Timer += 1.0f;
+		m_Time += 1.0f;
 		printf("%d fps \n", m_Frames);
 		m_Frames = 0;
 	}
