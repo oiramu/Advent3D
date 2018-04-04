@@ -18,6 +18,7 @@ namespace advent { namespace graphics {
 	public:
 
 		VertexArray();
+		~VertexArray();
 
 		void bind() const;
 

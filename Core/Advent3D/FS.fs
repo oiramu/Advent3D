@@ -1,9 +1,15 @@
 #version 330 core
 
-uniform vec4 color;
-out vec4 OUTcolor;
+layout (location = 0) out vec4 color;
+
+uniform vec2 light_pos;
+
+in VS_DATA
+{
+	vec4 color;
+} fs_in;
 
 void main()
 {
-	OUTcolor = color;
+	color = fs_in.color;
 }

@@ -8,6 +8,11 @@ namespace advent { namespace graphics {
 		glGenVertexArrays(1, &m_ID);
 	}
 
+	VertexArray::~VertexArray()
+	{
+		glDeleteVertexArrays(1, &m_ID);
+	}
+
 	void VertexArray::bind() const
 	{
 		glBindVertexArray(m_ID);

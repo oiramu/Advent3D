@@ -16,6 +16,7 @@ namespace advent { namespace graphics {
 	public:
 
 		Buffer(GLfloat* data, GLsizei count, GLuint componentCount, GLenum usage = GL_STATIC_DRAW);
+		~Buffer();
 
 		void bind() const;
 

@@ -11,18 +11,15 @@ namespace advent { namespace graphics {
 	private:
 
 		GLuint m_ID;
-		GLuint m_Count;
 
 	public:
 
 		IndexBuffer(GLushort* data, GLsizei count, GLenum usage = GL_STATIC_DRAW);
+		~IndexBuffer();
 
 		void bind() const;
 
 		void unbind() const;
-
-		inline GLuint getCount() const { return m_Count; }
-
 	};
 
 } }

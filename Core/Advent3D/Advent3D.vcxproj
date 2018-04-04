@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -155,7 +155,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\internal\graphics\2D\renderable2D.cpp" />
-    <ClCompile Include="src\internal\graphics\2D\renderers\simple_renderer2D.cpp" />
+    <ClCompile Include="src\internal\graphics\2D\renderers\batch_renderer2D.cpp" />
+    <ClCompile Include="src\internal\graphics\2D\sprite.cpp" />
+    <ClCompile Include="src\internal\graphics\2D\static_sprite.cpp" />
     <ClCompile Include="src\internal\graphics\buffers\buffer.cpp" />
     <ClCompile Include="src\internal\application\input.cpp" />
     <ClCompile Include="src\internal\graphics\buffers\index_buffer.cpp" />
@@ -167,8 +169,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\internal\graphics\2D\renderable2D.h" />
+    <ClInclude Include="src\internal\graphics\2D\renderers\batch_renderer2D.h" />
     <ClInclude Include="src\internal\graphics\2D\renderers\renderer2D.h" />
-    <ClInclude Include="src\internal\graphics\2D\renderers\simple_renderer2D.h" />
+    <ClInclude Include="src\internal\graphics\2D\sprite.h" />
+    <ClInclude Include="src\internal\graphics\2D\static_sprite.h" />
     <ClInclude Include="src\internal\graphics\buffers\buffer.h" />
     <ClInclude Include="src\internal\application\input.h" />
     <ClInclude Include="src\internal\graphics\buffers\index_buffer.h" />
