@@ -12,9 +12,6 @@ struct vec2
 	float x;
 	float y;
 
-	//length
-	float magnitude;
-
 	//constructors
 	vec2();
 	vec2(const float& x, const float& y);
@@ -40,8 +37,6 @@ struct vec2
 
 	//utility functions
 	void normalize();
-
-	void calculateMagnitude();
 
 };
 		 

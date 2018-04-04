@@ -13,9 +13,6 @@ struct vec3
 	float y;
 	float z;
 
-	//length
-	float magnitude;
-
 	//constructors
 	vec3();
 	vec3(const float& x, const float& y, const float& z);
@@ -41,8 +38,6 @@ struct vec3
 
 	//utility functions
 	void normalize();
-
-	void calculateMagnitude();
 
 };
 } }

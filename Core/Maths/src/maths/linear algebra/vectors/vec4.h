@@ -14,9 +14,6 @@ struct vec4
 	float z;
 	float w;
 
-	//length
-	float magnitude;
-
 	//constructors
 	vec4();
 	vec4(const float& x, const float& y, const float& z, const float& w);
@@ -42,8 +39,6 @@ struct vec4
 
 	//utility functions
 	void normalize();
-
-	void calculateMagnitude();
 
 };
 } }

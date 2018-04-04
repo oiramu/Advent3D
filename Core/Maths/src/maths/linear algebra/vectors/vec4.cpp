@@ -8,7 +8,6 @@ vec4::vec4()
 	this->y = 0.0f;
 	this->z = 0.0f;
 	this->w = 0.0f;
-	this->magnitude = 0.0f;
 }
 
 vec4::vec4(const float& x, const float& y, const float& z, const float& w)
@@ -17,7 +16,6 @@ vec4::vec4(const float& x, const float& y, const float& z, const float& w)
 	this->y = y;
 	this->z = z;
 	this->w = w;
-	calculateMagnitude();
 }
 
 //operations
@@ -27,7 +25,6 @@ vec4& vec4::add(const vec4& other)
 	y += other.y;
 	z += other.z;
 	w += other.w;
-	calculateMagnitude();
 
 	return *this;
 }
@@ -38,7 +35,6 @@ vec4& vec4::subtract(const vec4& other)
 	y -= other.y;
 	z += other.z;
 	w -= other.w;
-	calculateMagnitude();
 
 	return *this;
 }
@@ -49,7 +45,6 @@ vec4& vec4::multiply(const vec4& other)
 	y *= other.y;
 	z *= other.z;
 	w *= other.w;
-	calculateMagnitude();
 
 	return *this;
 }
@@ -60,7 +55,6 @@ vec4& vec4::divide(const vec4& other)
 	y /= other.y;
 	z /= other.z;
 	w /= other.w;
-	calculateMagnitude();
 
 	return *this;
 }
@@ -109,18 +103,7 @@ vec4& vec4::operator/= (const vec4& other)
 std::ostream& operator<< (std::ostream& stream, const vec4& vector)
 {
 	stream << "vec4: (" << vector.x << " , " << vector.y << " , " << vector.z << " , " << vector.w << ")\n";
-	stream << "magnitude: " << vector.magnitude;
 	return stream;
 }
 
-//utility functions
-void vec4::calculateMagnitude()
-{
-	magnitude = sqrt(x*x + y*y);
-}
-
-void vec4::normalize()
-{
-	magnitude = 1;
-}	
 } }
